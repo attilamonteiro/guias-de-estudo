@@ -2,10 +2,11 @@
 
 import Box from "@mui/material/Box";
 import Drawer from "@mui/material/Drawer";
-import { useState, type ReactNode } from "react";
+import { useCallback, useState, type ReactNode } from "react";
 import type { VisaoDoGuia } from "@/lib/guia";
 import { ALTURA_DO_CABECALHO, LARGURA_MAXIMA, margemLateral } from "@/tema/estilos";
 import { CabecalhoDoGuia } from "./CabecalhoDoGuia";
+import { ConteudoOuEsqueleto } from "./ConteudoOuEsqueleto";
 import { IndiceLateral } from "./IndiceLateral";
 
 /**
@@ -14,6 +15,8 @@ import { IndiceLateral } from "./IndiceLateral";
  */
 export function CascaDoGuia({ visao, children }: { visao: VisaoDoGuia; children: ReactNode }) {
   const [gavetaAberta, setGavetaAberta] = useState(false);
+  // Estável de propósito: as linhas memorizadas do índice não podem ser refeitas por causa deste callback.
+  const fecharGaveta = useCallback(() => setGavetaAberta(false), []);
   return (
     <>
       <CabecalhoDoGuia visao={visao} aoAbrirIndice={() => setGavetaAberta(true)} />
@@ -49,12 +52,12 @@ export function CascaDoGuia({ visao, children }: { visao: VisaoDoGuia; children:
           id="conteudo"
           sx={{ minWidth: 0, pt: { xs: "22px", md: "28px" }, pb: { xs: "70px", md: "90px" }, pl: { md: "34px" } }}
         >
-          {children}
+          <ConteudoOuEsqueleto>{children}</ConteudoOuEsqueleto>
         </Box>
       </Box>
       <Drawer
         open={gavetaAberta}
-        onClose={() => setGavetaAberta(false)}
+        onClose={fecharGaveta}
         sx={{ display: { md: "none" } }}
         slotProps={{
           paper: {
@@ -67,7 +70,7 @@ export function CascaDoGuia({ visao, children }: { visao: VisaoDoGuia; children:
           },
         }}
       >
-        <IndiceLateral visao={visao} aoEscolher={() => setGavetaAberta(false)} />
+        <IndiceLateral visao={visao} aoEscolher={fecharGaveta} />
       </Drawer>
     </>
   );

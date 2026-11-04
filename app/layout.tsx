@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import type { ReactNode } from "react";
+import { BarraDeNavegacao } from "@/componentes/casca/BarraDeNavegacao";
 import { PreferenciasProvider } from "@/lib/preferencias";
 import { CLASSES_DAS_FONTES } from "@/tema/fontes";
 import { RegistroDoTema } from "@/tema/RegistroDoTema";
@@ -25,7 +26,10 @@ export default function LayoutRaiz({ children }: { children: ReactNode }) {
     <html lang="pt-BR" className={CLASSES_DAS_FONTES} suppressHydrationWarning>
       <body>
         <RegistroDoTema>
-          <PreferenciasProvider>{children}</PreferenciasProvider>
+          <PreferenciasProvider>
+            <BarraDeNavegacao />
+            {children}
+          </PreferenciasProvider>
         </RegistroDoTema>
       </body>
     </html>

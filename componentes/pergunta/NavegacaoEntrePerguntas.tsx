@@ -5,6 +5,7 @@ import Button from "@mui/material/Button";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useEffect } from "react";
+import { iniciarNavegacao } from "@/lib/navegacao";
 import { usePreferencias, useProgresso } from "@/lib/preferencias";
 import { rotas } from "@/lib/rotas";
 
@@ -34,8 +35,11 @@ export function NavegacaoEntrePerguntas({ guiaId, chaveDeProgresso, anterior, pr
       const alvo = evento.target as HTMLElement | null;
       if (alvo && TECLAS_DE_CAMPO.test(alvo.tagName)) return;
       if (evento.altKey || evento.ctrlKey || evento.metaKey) return;
-      if (evento.key === "ArrowRight" && proxima) router.push(rotas.pergunta(guiaId, proxima.numero));
-      if (evento.key === "ArrowLeft" && anterior) router.push(rotas.pergunta(guiaId, anterior.numero));
+      const destino = evento.key === "ArrowRight" ? proxima : evento.key === "ArrowLeft" ? anterior : undefined;
+      if (!destino) return;
+      const caminho = rotas.pergunta(guiaId, destino.numero);
+      iniciarNavegacao(caminho);
+      router.push(caminho);
     }
     window.addEventListener("keydown", aoTeclar);
     return () => window.removeEventListener("keydown", aoTeclar);

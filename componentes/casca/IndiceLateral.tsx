@@ -1,19 +1,16 @@
 "use client";
 
 import Box from "@mui/material/Box";
-import ListItemButton from "@mui/material/ListItemButton";
 import TextField from "@mui/material/TextField";
 import Typography from "@mui/material/Typography";
-import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
 import type { VisaoDoGuia } from "@/lib/guia";
 import { usePreferencias, useProgresso } from "@/lib/preferencias";
 import { rotas } from "@/lib/rotas";
-import { paletaDe } from "@/tema/cores";
 import { textoDeRotulo } from "@/tema/estilos";
-import { FAMILIA_MONO } from "@/tema/familias";
 import { mesmoCaminho } from "./caminhos";
+import { ItemDoIndice } from "./ItemDoIndice";
 
 interface Props {
   visao: VisaoDoGuia;
@@ -60,57 +57,17 @@ export function IndiceLateral({ visao, aoEscolher }: Props) {
               {modulo.nome[idioma]}
             </Typography>
             {itens.map((item) => {
-              const atual = mesmoCaminho(caminho, rotas.pergunta(visao.id, item.numero));
-              const estado = progresso[item.chaveDeProgresso];
+              const href = rotas.pergunta(visao.id, item.numero);
               return (
-                <ListItemButton
+                <ItemDoIndice
                   key={item.numero}
-                  component={Link}
-                  href={rotas.pergunta(visao.id, item.numero)}
-                  prefetch={false}
-                  onClick={aoEscolher}
-                  selected={atual}
-                  aria-current={atual ? "page" : undefined}
-                  sx={{
-                    display: "grid",
-                    gridTemplateColumns: "40px 1fr 16px",
-                    alignItems: "center",
-                    gap: "6px",
-                    px: 1,
-                    py: "6px",
-                    borderRadius: 1,
-                    fontSize: "0.92rem",
-                    lineHeight: 1.35,
-                    "&:hover": { bgcolor: "tons.superficie2" },
-                    "&.Mui-selected, &.Mui-selected:hover": { bgcolor: "tons.acentoSuave", fontWeight: 600 },
-                  }}
-                >
-                  <Box component="span" sx={{ fontFamily: FAMILIA_MONO, fontSize: "0.78rem", color: "text.secondary" }}>
-                    {item.rotulo}
-                  </Box>
-                  <span>{item.titulo[idioma]}</span>
-                  <Box
-                    component="span"
-                    aria-hidden
-                    sx={(tema) => {
-                      const p = paletaDe(tema);
-                      return {
-                        width: 14,
-                        height: 14,
-                        borderRadius: "50%",
-                        border: "1.5px solid",
-                        borderColor:
-                          estado === "feito" ? p.success.main : estado === "revisar" ? p.warning.main : p.divider,
-                        bgcolor:
-                          estado === "feito"
-                            ? p.success.main
-                            : estado === "revisar"
-                              ? p.tons.avisoSuave
-                              : "transparent",
-                      };
-                    }}
-                  />
-                </ListItemButton>
+                  href={href}
+                  rotulo={item.rotulo}
+                  titulo={item.titulo[idioma]}
+                  atual={mesmoCaminho(caminho, href)}
+                  estado={progresso[item.chaveDeProgresso]}
+                  aoEscolher={aoEscolher}
+                />
               );
             })}
           </Box>

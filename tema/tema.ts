@@ -64,7 +64,7 @@ export const tema = createTheme({
           strong: { fontWeight: 600 },
           ":focus-visible": { outline: `2px solid ${p.primary.main}`, outlineOffset: 2 },
           "@media (prefers-reduced-motion: reduce)": {
-            "*": { transition: "none !important", scrollBehavior: "auto !important" },
+            "*": { transition: "none !important", animation: "none !important", scrollBehavior: "auto !important" },
           },
         };
       },
