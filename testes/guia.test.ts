@@ -36,6 +36,8 @@ describe("rotuloDaPergunta", () => {
     expect(rotuloDaPergunta(nodejs, 529)).toBe("C29");
     expect(rotuloDaPergunta(nodejs, 601)).toBe("G01");
     expect(rotuloDaPergunta(nodejs, 691)).toBe("G91");
+    expect(rotuloDaPergunta(nodejs, 701)).toBe("P01");
+    expect(rotuloDaPergunta(nodejs, 800)).toBe("P100");
   });
 
   it("os rótulos são únicos dentro de cada guia", () => {
@@ -92,7 +94,7 @@ describe("guia de Node.js", () => {
       .filter((m) => m.origem === origem)
       .map((m) => nodejs.perguntas.filter((p) => p.modulo === m.id).length);
 
-  it("tem 519 perguntas de seis fontes, 349 repetidas e 170 explicações distintas", () => {
+  it("tem 619 perguntas de sete fontes, 417 repetidas e 202 explicações distintas", () => {
     const porModulo = (id: string) => nodejs.perguntas.filter((p) => p.modulo === id);
     expect(porModulo("turing-basicas")).toHaveLength(22);
     expect(porModulo("turing-intermediarias")).toHaveLength(18);
@@ -102,10 +104,11 @@ describe("guia de Node.js", () => {
     expect(doGuia("founditgulf-").map((p) => p.numero)).toEqual(faixa(401, 100));
     expect(doGuia("coderpad-").map((p) => p.numero)).toEqual(faixa(501, 29));
     expect(doGuia("gist-").map((p) => p.numero)).toEqual(faixa(601, 91));
-    expect(nodejs.perguntas).toHaveLength(519);
-    expect(nodejs.perguntas.filter(ehRepetida)).toHaveLength(349);
-    expect(perguntasDistintas(nodejs)).toHaveLength(170);
-    expect(visaoDoGuia(nodejs).totalDistinto).toBe(170);
+    expect(doGuia("pawanmkr-").map((p) => p.numero)).toEqual(faixa(701, 100));
+    expect(nodejs.perguntas).toHaveLength(619);
+    expect(nodejs.perguntas.filter(ehRepetida)).toHaveLength(417);
+    expect(perguntasDistintas(nodejs)).toHaveLength(202);
+    expect(visaoDoGuia(nodejs).totalDistinto).toBe(202);
   });
 
   it("os módulos aparecem na ordem em que o guia os declara", () => {
@@ -123,6 +126,7 @@ describe("guia de Node.js", () => {
     expect(tamanhos("founditgulf")).toEqual([25, 25, 25, 10, 5, 10]);
     expect(tamanhos("coderpad")).toEqual([10, 9, 10]);
     expect(tamanhos("gist")).toEqual([20, 20, 28, 20, 3]);
+    expect(tamanhos("pawanmkr")).toEqual([12, 9, 9, 7, 6, 7, 5, 11, 6, 6, 11, 11]);
   });
 
   it("o CoderPad responde sem bloco de código: a explicação própria dele (C25) não tem nenhum", () => {

@@ -518,6 +518,106 @@ import { g088 } from "./g088-require-x-injecao-de-dependencia";
 import { g089 } from "./g089-eventos-em-ciclo-sincrono";
 import { g090 } from "./g090-eventos-em-ciclo-com-setimmediate";
 import { g091 } from "./g091-eventos-em-ciclo-com-nexttick";
+import { p001 } from "./p001-vantagens-e-limites-em-escala";
+import { p002 } from "./p002-o-event-loop-por-dentro";
+import { p003 } from "./p003-codigo-sincrono-x-assincrono-desempenho";
+import { p004 } from "./p004-componentes-internos-do-v8";
+import { p005 } from "./p005-commonjs-x-es-modules";
+import { p006 } from "./p006-coleta-de-lixo-e-vazamentos";
+import { p007 } from "./p007-o-papel-do-libuv";
+import { p008 } from "./p008-worker-threads-x-processos-filhos";
+import { p009 } from "./p009-cluster-e-estado";
+import { p010 } from "./p010-dns-e-desempenho";
+import { p011 } from "./p011-streams-para-dados-eficientes";
+import { p012 } from "./p012-backpressure-boas-praticas";
+import { p013 } from "./p013-rate-limiting-no-express";
+import { p014 } from "./p014-estrategias-de-cache";
+import { p015 } from "./p015-cache-em-memoria-x-distribuido";
+import { p016 } from "./p016-versionamento-de-api";
+import { p017 } from "./p017-hateoas";
+import { p018 } from "./p018-rest-x-graphql";
+import { p019 } from "./p019-proxy-reverso-e-beneficios";
+import { p020 } from "./p020-middleware-personalizado";
+import { p021 } from "./p021-cors-mal-configurado";
+import { p022 } from "./p022-autenticacao-com-jwt";
+import { p023 } from "./p023-cookies-x-tokens";
+import { p024 } from "./p024-refresh-tokens";
+import { p025 } from "./p025-vulnerabilidades-comuns";
+import { p026 } from "./p026-injecao-de-sql-e-nosql";
+import { p027 } from "./p027-helmet-e-middlewares-de-seguranca";
+import { p028 } from "./p028-o-papel-da-csp";
+import { p029 } from "./p029-oauth-2-0-e-seus-fluxos";
+import { p030 } from "./p030-sessao-x-autenticacao-sem-estado";
+import { p031 } from "./p031-roteamento-do-express-por-dentro";
+import { p032 } from "./p032-organizar-rotas-e-controladores";
+import { p033 } from "./p033-backend-multi-tenant";
+import { p034 } from "./p034-cqrs";
+import { p035 } from "./p035-event-sourcing";
+import { p036 } from "./p036-sagas";
+import { p037 } from "./p037-atomicidade-entre-microsservicos";
+import { p038 } from "./p038-teorema-cap";
+import { p039 } from "./p039-sql-x-nosql-em-escala";
+import { p040 } from "./p040-normalizacao-x-desnormalizacao";
+import { p041 } from "./p041-indices-de-banco-de-dados";
+import { p042 } from "./p042-planejador-de-consultas-e-explain";
+import { p043 } from "./p043-orm-pros-e-contras";
+import { p044 } from "./p044-jobs-de-longa-duracao";
+import { p045 } from "./p045-bullmq-agenda-e-bee-queue";
+import { p046 } from "./p046-agendar-e-repetir-jobs-com-falha";
+import { p047 } from "./p047-monitorar-filas-de-jobs";
+import { p048 } from "./p048-padroes-de-upload-de-arquivos";
+import { p049 } from "./p049-transmitir-arquivos-grandes";
+import { p050 } from "./p050-upload-de-arquivos-seguro";
+import { p051 } from "./p051-configuracao-por-ambiente";
+import { p052 } from "./p052-observabilidade";
+import { p053 } from "./p053-prometheus-e-outras-ferramentas";
+import { p054 } from "./p054-logs-centralizados";
+import { p055 } from "./p055-logs-estruturados";
+import { p056 } from "./p056-openapi-swagger";
+import { p057 } from "./p057-descoberta-de-servicos";
+import { p058 } from "./p058-orquestracao-x-coreografia";
+import { p059 } from "./p059-filas-de-mensagens-pros-e-contras";
+import { p060 } from "./p060-consistencia-eventual";
+import { p061 } from "./p061-locks-distribuidos";
+import { p062 } from "./p062-teste-de-carga";
+import { p063 } from "./p063-escala-horizontal-x-vertical";
+import { p064 } from "./p064-implantacao-blue-green";
+import { p065 } from "./p065-implantacao-sem-downtime";
+import { p066 } from "./p066-feature-flags";
+import { p067 } from "./p067-validar-esquemas-de-entrada";
+import { p068 } from "./p068-joi-yup-e-zod";
+import { p069 } from "./p069-testes-de-integracao-de-apis";
+import { p070 } from "./p070-mock-de-servicos-externos";
+import { p071 } from "./p071-tdd-no-backend";
+import { p072 } from "./p072-depreciacao-de-apis";
+import { p073 } from "./p073-armadilhas-do-async-await";
+import { p074 } from "./p074-desempenho-com-alta-concorrencia";
+import { p075 } from "./p075-vazamentos-de-memoria-em-producao";
+import { p076 } from "./p076-websockets-para-apis-em-tempo-real";
+import { p077 } from "./p077-polling-long-polling-sse-e-websockets";
+import { p078 } from "./p078-limites-e-escala-em-tempo-real";
+import { p079 } from "./p079-suporte-multirregiao";
+import { p080 } from "./p080-gerenciar-feature-toggles";
+import { p081 } from "./p081-apis-idempotentes";
+import { p082 } from "./p082-circuit-breaker-e-bulkheads";
+import { p083 } from "./p083-bulkheads";
+import { p084 } from "./p084-retentativas-com-backoff-exponencial";
+import { p085 } from "./p085-timeouts-e-cancelamentos";
+import { p086 } from "./p086-exclusao-logica-x-fisica";
+import { p087 } from "./p087-migracoes-e-evolucao-de-esquema";
+import { p088 } from "./p088-pool-de-conexoes";
+import { p089 } from "./p089-evolucao-de-esquema";
+import { p090 } from "./p090-backend-for-frontend-bff";
+import { p091 } from "./p091-edge-functions";
+import { p092 } from "./p092-controle-de-acesso-rbac-e-abac";
+import { p093 } from "./p093-gargalos-de-desempenho";
+import { p094 } from "./p094-clean-architecture";
+import { p095 } from "./p095-praticas-de-devops";
+import { p096 } from "./p096-docker-no-backend";
+import { p097 } from "./p097-sidecars";
+import { p098 } from "./p098-cabecalhos-de-seguranca-no-express";
+import { p099 } from "./p099-api-gateway";
+import { p100 } from "./p100-proteger-segredos";
 
 /** Todas as perguntas do guia, na ordem de estudo. Gerado por scripts/gerar-indice-de-perguntas.mts. */
 export const perguntas: Pergunta[] = [
@@ -1040,4 +1140,104 @@ export const perguntas: Pergunta[] = [
   g089,
   g090,
   g091,
+  p001,
+  p002,
+  p003,
+  p004,
+  p005,
+  p006,
+  p007,
+  p008,
+  p009,
+  p010,
+  p011,
+  p012,
+  p013,
+  p014,
+  p015,
+  p016,
+  p017,
+  p018,
+  p019,
+  p020,
+  p021,
+  p022,
+  p023,
+  p024,
+  p025,
+  p026,
+  p027,
+  p028,
+  p029,
+  p030,
+  p031,
+  p032,
+  p033,
+  p034,
+  p035,
+  p036,
+  p037,
+  p038,
+  p039,
+  p040,
+  p041,
+  p042,
+  p043,
+  p044,
+  p045,
+  p046,
+  p047,
+  p048,
+  p049,
+  p050,
+  p051,
+  p052,
+  p053,
+  p054,
+  p055,
+  p056,
+  p057,
+  p058,
+  p059,
+  p060,
+  p061,
+  p062,
+  p063,
+  p064,
+  p065,
+  p066,
+  p067,
+  p068,
+  p069,
+  p070,
+  p071,
+  p072,
+  p073,
+  p074,
+  p075,
+  p076,
+  p077,
+  p078,
+  p079,
+  p080,
+  p081,
+  p082,
+  p083,
+  p084,
+  p085,
+  p086,
+  p087,
+  p088,
+  p089,
+  p090,
+  p091,
+  p092,
+  p093,
+  p094,
+  p095,
+  p096,
+  p097,
+  p098,
+  p099,
+  p100,
 ];

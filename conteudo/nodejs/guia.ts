@@ -3,7 +3,7 @@ import { perguntas } from "./perguntas";
 
 export const nodejs: Guia = {
   id: "nodejs",
-  detalhe: "519 perguntas · PT/EN",
+  detalhe: "619 perguntas · PT/EN",
   textos: {
     pt: {
       nome: "Guia de Node.js",
@@ -11,7 +11,7 @@ export const nodejs: Guia = {
         "Perguntas de entrevista sobre Node.js (event loop, módulos, npm, streams, Express, produção, segurança), do básico ao avançado e com cenários, cada uma com o método de explicação mais adequado, armadilhas e autoteste.",
       titulo: "Node.js, do básico ao avançado.",
       introducao:
-        "519 perguntas de entrevista sobre Node.js, de seis fontes, cada uma explicada com o método que mais combina com ela. Onde várias perguntas pedem a mesma coisa, a explicação é a mesma (são 170 explicações distintas) e o progresso conta uma vez só. Marque o que já domina e treine só o resto.",
+        "619 perguntas de entrevista sobre Node.js, de sete fontes, cada uma explicada com o método que mais combina com ela. Onde várias perguntas pedem a mesma coisa, a explicação é a mesma (são 202 explicações distintas) e o progresso conta uma vez só. Marque o que já domina e treine só o resto.",
     },
     en: {
       nome: "Node.js Guide",
@@ -19,7 +19,7 @@ export const nodejs: Guia = {
         "Node.js interview questions (event loop, modules, npm, streams, Express, production, security), from basic to advanced and with scenarios, each with the best-fitting explanation method, pitfalls and a self-test.",
       titulo: "Node.js, from basics to advanced.",
       introducao:
-        "519 Node.js interview questions, from six sources, each explained with the method that fits it best. Where several questions ask for the same thing, the explanation is the same (170 distinct explanations) and progress counts once. Mark what you already own and drill only the rest.",
+        "619 Node.js interview questions, from seven sources, each explained with the method that fits it best. Where several questions ask for the same thing, the explanation is the same (202 distinct explanations) and progress counts once. Mark what you already own and drill only the rest.",
     },
   },
   fontes: [
@@ -88,6 +88,17 @@ export const nodejs: Guia = {
         en: "Questions from the “NodeJS Interview Questions” gist by paulfranco, by difficulty level (two to five stars), with three code snippets to analyze at the end. The gist repeats some questions (the block of eleven at level four and one about single-threading); here each one appears once. The code snippets are described in words in the question. The answers are original explanations (tag “= T”, “= L”, “= D”, “= F”, “= C” or “= G”).",
       },
       url: "https://gist.github.com/paulfranco/9f88a2879b7b7d88de5d1921aef2093b",
+    },
+    {
+      id: "pawanmkr",
+      marca: "P",
+      base: 700,
+      titulo: { pt: "pawanmkr · 100 perguntas", en: "pawanmkr · 100 questions" },
+      descricao: {
+        pt: "Perguntas do repositório “100 backend interview questions for Node.js developers”, de pawanmkr, em uma lista única que vai dos internos do Node.js a arquitetura distribuída, bancos de dados, observabilidade e DevOps. As respostas são explicações próprias, com o ângulo de Node.js (etiqueta “= T”, “= L”, “= D”, “= F”, “= C”, “= G” ou “= P”).",
+        en: "Questions from the “100 backend interview questions for Node.js developers” repository by pawanmkr, in a single list that runs from Node.js internals to distributed architecture, databases, observability and DevOps. The answers are original explanations, with a Node.js angle (tag “= T”, “= L”, “= D”, “= F”, “= C”, “= G” or “= P”).",
+      },
+      url: "https://github.com/pawanmkr/100-backend-interview-questions-for-nodejs-developers",
     },
   ],
   modulos: [
@@ -323,6 +334,84 @@ export const nodejs: Guia = {
       letra: "",
       origem: "gist",
       nome: { pt: "Gist · Código para analisar", en: "Gist · Code to analyze" },
+    },
+    {
+      id: "pawanmkr-internos",
+      letra: "",
+      origem: "pawanmkr",
+      nome: { pt: "pawanmkr · Internos e concorrência", en: "pawanmkr · Internals and concurrency" },
+    },
+    {
+      id: "pawanmkr-apis",
+      letra: "",
+      origem: "pawanmkr",
+      nome: { pt: "pawanmkr · APIs, cache e Express", en: "pawanmkr · APIs, caching and Express" },
+    },
+    {
+      id: "pawanmkr-seguranca",
+      letra: "",
+      origem: "pawanmkr",
+      nome: { pt: "pawanmkr · Autenticação e segurança", en: "pawanmkr · Authentication and security" },
+    },
+    {
+      id: "pawanmkr-arquitetura",
+      letra: "",
+      origem: "pawanmkr",
+      nome: {
+        pt: "pawanmkr · Arquitetura e padrões distribuídos",
+        en: "pawanmkr · Architecture and distributed patterns",
+      },
+    },
+    {
+      id: "pawanmkr-bancos",
+      letra: "",
+      origem: "pawanmkr",
+      nome: { pt: "pawanmkr · Bancos de dados", en: "pawanmkr · Databases" },
+    },
+    {
+      id: "pawanmkr-jobs-e-arquivos",
+      letra: "",
+      origem: "pawanmkr",
+      nome: { pt: "pawanmkr · Jobs e arquivos", en: "pawanmkr · Jobs and files" },
+    },
+    {
+      id: "pawanmkr-observabilidade",
+      letra: "",
+      origem: "pawanmkr",
+      nome: { pt: "pawanmkr · Configuração e observabilidade", en: "pawanmkr · Configuration and observability" },
+    },
+    {
+      id: "pawanmkr-distribuidos",
+      letra: "",
+      origem: "pawanmkr",
+      nome: {
+        pt: "pawanmkr · Microsserviços, escala e implantação",
+        en: "pawanmkr · Microservices, scaling and deployment",
+      },
+    },
+    {
+      id: "pawanmkr-testes",
+      letra: "",
+      origem: "pawanmkr",
+      nome: { pt: "pawanmkr · Validação e testes", en: "pawanmkr · Validation and testing" },
+    },
+    {
+      id: "pawanmkr-desempenho",
+      letra: "",
+      origem: "pawanmkr",
+      nome: { pt: "pawanmkr · Desempenho e tempo real", en: "pawanmkr · Performance and real time" },
+    },
+    {
+      id: "pawanmkr-resiliencia",
+      letra: "",
+      origem: "pawanmkr",
+      nome: { pt: "pawanmkr · Resiliência e dados em produção", en: "pawanmkr · Resilience and production data" },
+    },
+    {
+      id: "pawanmkr-devops",
+      letra: "",
+      origem: "pawanmkr",
+      nome: { pt: "pawanmkr · Arquitetura, DevOps e segurança", en: "pawanmkr · Architecture, DevOps and security" },
     },
   ],
   perguntas,
