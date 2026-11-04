@@ -1,14 +1,24 @@
 // Regras de leitura de um guia: números, repetições entre listas e a projeção leve usada pela interface.
-import type { Guia, IdMetodo, Modulo, Pergunta, PerguntaPropria, PerguntaRepetida, Traduzido } from "@/conteudo/tipos";
+import type {
+  Fonte,
+  Guia,
+  IdMetodo,
+  Modulo,
+  Pergunta,
+  PerguntaPropria,
+  PerguntaRepetida,
+  Traduzido,
+} from "@/conteudo/tipos";
 
 export function ehRepetida(pergunta: Pergunta): pergunta is PerguntaRepetida {
   return "repeteA" in pergunta;
 }
 
-/** Q01…Q30 na lista original, R01…R50 no roadmap.sh (números a partir de 101). */
+/** Q01… na lista original, R01… no roadmap.sh (a partir de 101), M01… na MentorCruise (a partir de 201). */
 export function rotuloDaPergunta(numero: number): string {
   const dois = (n: number) => String(n).padStart(2, "0");
-  return numero < 100 ? `Q${dois(numero)}` : `R${dois(numero - 100)}`;
+  if (numero < 100) return `Q${dois(numero)}`;
+  return numero < 200 ? `R${dois(numero - 100)}` : `M${dois(numero - 200)}`;
 }
 
 export function perguntaPorNumero(guia: Guia, numero: number): Pergunta | undefined {
@@ -52,10 +62,14 @@ export interface ItemDoIndice {
   pergunta: Traduzido<string>;
 }
 
+/** Módulo com o selo que o identifica nas listas (a letra própria ou a marca da fonte). */
+export type ModuloNaVisao = Modulo & { marca: string };
+
 export interface VisaoDoGuia {
   id: string;
   nome: Traduzido<string>;
-  modulos: Modulo[];
+  fontes: Fonte[];
+  modulos: ModuloNaVisao[];
   itens: ItemDoIndice[];
   /** Quantidade de explicações distintas (as perguntas repetidas contam uma vez). */
   totalDistinto: number;
@@ -77,7 +91,11 @@ export function visaoDoGuia(guia: Guia): VisaoDoGuia {
   return {
     id: guia.id,
     nome: { pt: guia.textos.pt.nome, en: guia.textos.en.nome },
-    modulos: guia.modulos,
+    fontes: guia.fontes,
+    modulos: guia.modulos.map((modulo) => ({
+      ...modulo,
+      marca: modulo.letra || guia.fontes.find((fonte) => fonte.id === modulo.origem)?.marca || "",
+    })),
     itens: itensDoIndice(guia),
     totalDistinto: perguntasDistintas(guia).length,
   };

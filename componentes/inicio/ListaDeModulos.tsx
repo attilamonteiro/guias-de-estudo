@@ -2,14 +2,13 @@
 
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
-import type { Modulo } from "@/conteudo/tipos";
 import type { VisaoDoGuia } from "@/lib/guia";
 import { usePreferencias } from "@/lib/preferencias";
 import { FAMILIA_MONO } from "@/tema/familias";
 import { CartaoDePergunta } from "./CartaoDePergunta";
 
-/** Módulos de uma origem ("lista" ou "roadmap") e as perguntas de cada um. */
-export function ListaDeModulos({ visao, origem }: { visao: VisaoDoGuia; origem: Modulo["origem"] }) {
+/** Módulos de uma fonte (`Modulo.origem`) e as perguntas de cada um. */
+export function ListaDeModulos({ visao, origem }: { visao: VisaoDoGuia; origem: string }) {
   const { idioma } = usePreferencias();
   return (
     <>
@@ -22,7 +21,7 @@ export function ListaDeModulos({ visao, origem }: { visao: VisaoDoGuia; origem: 
                 component="span"
                 sx={{ fontFamily: FAMILIA_MONO, fontSize: "0.76rem", color: "text.secondary", fontWeight: 500, mr: 1 }}
               >
-                {modulo.letra || "R"}
+                {modulo.marca}
               </Box>
               {modulo.nome[idioma]}
             </Typography>

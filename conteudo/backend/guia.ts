@@ -3,8 +3,7 @@ import { perguntas } from "./perguntas";
 
 export const backend: Guia = {
   id: "backend",
-  detalhe: "80 perguntas · PT/EN",
-  fonteExterna: { url: "https://roadmap.sh/questions/backend" },
+  detalhe: "120 perguntas · PT/EN",
   textos: {
     pt: {
       nome: "Guia de Backend",
@@ -12,11 +11,7 @@ export const backend: Guia = {
         "Perguntas de entrevista de backend (arquitetura, bancos, cache, segurança, sistemas distribuídos), cada uma com o método de explicação mais adequado, armadilhas e autoteste.",
       titulo: "Entenda de verdade, uma vez só.",
       introducao:
-        "30 perguntas de entrevista de backend mais as 50 do roadmap.sh, cada uma explicada com o método que mais combina com ela. Onde as listas coincidem, a explicação é a mesma e o progresso conta uma vez só. Marque o que já domina e treine só o resto.",
-      secaoDaLista: "Lista original · 30 perguntas",
-      secaoDoRoadmap: "roadmap.sh · 50 perguntas",
-      descricaoDoRoadmap:
-        "Perguntas de roadmap.sh/questions/backend, respondidas aqui com explicações próprias. As que repetem a lista original reaproveitam a mesma explicação (etiqueta “= Q”).",
+        "30 perguntas de entrevista de backend mais 50 do roadmap.sh e 40 da MentorCruise, cada uma explicada com o método que mais combina com ela. Onde as listas coincidem, a explicação é a mesma e o progresso conta uma vez só. Marque o que já domina e treine só o resto.",
     },
     en: {
       nome: "Backend Guide",
@@ -24,13 +19,36 @@ export const backend: Guia = {
         "Backend interview questions (architecture, databases, caching, security, distributed systems), each with the best-fitting explanation method, pitfalls and a self-test.",
       titulo: "Understand it properly, once.",
       introducao:
-        "30 backend interview questions plus the 50 from roadmap.sh, each explained with the method that fits it best. Where the lists overlap, the explanation is the same and progress counts once. Mark what you already own and drill only the rest.",
-      secaoDaLista: "Original list · 30 questions",
-      secaoDoRoadmap: "roadmap.sh · 50 questions",
-      descricaoDoRoadmap:
-        "Questions from roadmap.sh/questions/backend, answered here with original explanations. The ones that repeat the original list reuse the same explanation (tag “= Q”).",
+        "30 backend interview questions plus 50 from roadmap.sh and 40 from MentorCruise, each explained with the method that fits it best. Where the lists overlap, the explanation is the same and progress counts once. Mark what you already own and drill only the rest.",
     },
   },
+  fontes: [
+    {
+      id: "lista",
+      marca: "Q",
+      titulo: { pt: "Lista original · 30 perguntas", en: "Original list · 30 questions" },
+    },
+    {
+      id: "roadmap",
+      marca: "R",
+      titulo: { pt: "roadmap.sh · 50 perguntas", en: "roadmap.sh · 50 questions" },
+      descricao: {
+        pt: "Perguntas de roadmap.sh/questions/backend, respondidas aqui com explicações próprias. As que repetem outra pergunta do guia reaproveitam a mesma explicação (etiqueta “= Q”).",
+        en: "Questions from roadmap.sh/questions/backend, answered here with original explanations. The ones that repeat another question of the guide reuse the same explanation (tag “= Q”).",
+      },
+      url: "https://roadmap.sh/questions/backend",
+    },
+    {
+      id: "mentorcruise",
+      marca: "M",
+      titulo: { pt: "MentorCruise · 40 perguntas", en: "MentorCruise · 40 questions" },
+      descricao: {
+        pt: "Perguntas de mentorcruise.com/questions/backend, respondidas aqui com explicações próprias. As que repetem outra pergunta do guia reaproveitam a mesma explicação (etiqueta “= Q” ou “= R”). Nas perguntas de experiência (“você já…”), a explicação mostra como responder.",
+        en: "Questions from mentorcruise.com/questions/backend, answered here with original explanations. The ones that repeat another question of the guide reuse the same explanation (tag “= Q” or “= R”). On experience questions (“have you ever…”), the explanation shows how to answer.",
+      },
+      url: "https://mentorcruise.com/questions/backend/",
+    },
+  ],
   modulos: [
     {
       id: "arquitetura",
@@ -75,6 +93,12 @@ export const backend: Guia = {
       letra: "",
       origem: "roadmap",
       nome: { pt: "roadmap.sh · Avançado", en: "roadmap.sh · Advanced" },
+    },
+    {
+      id: "mentorcruise",
+      letra: "",
+      origem: "mentorcruise",
+      nome: { pt: "MentorCruise · Entrevista de backend", en: "MentorCruise · Backend interview" },
     },
   ],
   perguntas,

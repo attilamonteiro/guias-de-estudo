@@ -6,11 +6,11 @@ Site: https://attilamonteiro.github.io/guias-de-estudo/
 
 ## Guias
 
-| Guia                                | Conteúdo                                                                                                                                                                            |
-| ----------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| [Backend](conteudo/backend/guia.ts) | 80 perguntas de entrevista (30 originais + 50 de [roadmap.sh](https://roadmap.sh/questions/backend); 11 se repetem e reaproveitam a explicação, então são 69 explicações distintas) |
+| Guia                                | Conteúdo                                                                                                                                                                                                                                                                                    |
+| ----------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| [Backend](conteudo/backend/guia.ts) | 120 perguntas de entrevista (30 originais + 50 de [roadmap.sh](https://roadmap.sh/questions/backend) + 40 da [MentorCruise](https://mentorcruise.com/questions/backend/)); 26 se repetem e reaproveitam a explicação de outra, então são 94 explicações distintas (progresso conta uma vez) |
 
-As explicações são originais; do roadmap.sh vêm apenas os enunciados.
+As explicações são originais; do roadmap.sh e da MentorCruise vêm apenas os enunciados das perguntas.
 
 ## Desenvolver
 
@@ -36,7 +36,9 @@ npm run build      # gera out/ (valida os tipos também)
 
 ## Adicionar uma pergunta
 
-Crie `conteudo/<guia>/perguntas/<id>-<slug>.ts` exportando uma `Pergunta` (copie uma existente) e acrescente-a em `perguntas/index.ts`. Os testes reprovam número repetido, módulo inexistente, diferença de estrutura entre PT e EN e marcação `` ` `` / `**` aberta.
+Crie `conteudo/<guia>/perguntas/<id>-<slug>.ts` exportando uma `Pergunta` (copie uma existente). Confira o arquivo com `npm run conferir -- conteudo/backend/perguntas/<arquivo>.ts` e registre-o com `npm run indice` (regenera `perguntas/index.ts` em ordem de número). Os testes reprovam número repetido, módulo inexistente, diferença de estrutura entre PT e EN e marcação `` ` `` / `**` aberta.
+
+Se a pergunta pede o mesmo conteúdo de outra, escreva só o enunciado com `repeteA: <número da outra>` (veja os arquivos `m06-…`): ela mostra a explicação da outra e o progresso conta uma vez. O número segue a fonte: 1–99 lista original, 101–199 roadmap.sh, 201–299 MentorCruise.
 
 ## Adicionar um guia
 

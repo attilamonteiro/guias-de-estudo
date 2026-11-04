@@ -16,14 +16,13 @@ import { ListaDeModulos } from "./ListaDeModulos";
 interface Props {
   visao: VisaoDoGuia;
   textos: Traduzido<TextosDoGuia>;
-  urlDaFonte?: string;
 }
 
 const secao = { mt: "46px" } as const;
 const tituloDeSecao = { mb: "14px" } as const;
 
-/** Abertura do guia: apresentação, como estudar, métodos e todas as perguntas por módulo. */
-export function InicioDoGuia({ visao, textos, urlDaFonte }: Props) {
+/** Abertura do guia: apresentação, como estudar, métodos e as perguntas de cada fonte, por módulo. */
+export function InicioDoGuia({ visao, textos }: Props) {
   const { idioma, t } = usePreferencias();
   const guia = textos[idioma];
   const primeira = visao.itens[0];
@@ -70,27 +69,24 @@ export function InicioDoGuia({ visao, textos, urlDaFonte }: Props) {
         <GradeDeMetodos visao={visao} />
       </Box>
 
-      <Box component="section" sx={secao}>
-        <Typography component="h2" variant="h2" sx={tituloDeSecao}>
-          {guia.secaoDaLista}
-        </Typography>
-        <ListaDeModulos visao={visao} origem="lista" />
-      </Box>
-
-      <Box component="section" sx={secao}>
-        <Typography component="h2" variant="h2" sx={tituloDeSecao}>
-          {guia.secaoDoRoadmap}
-        </Typography>
-        <Typography sx={{ fontSize: "1rem", maxWidth: "62ch", color: "text.secondary" }}>
-          {guia.descricaoDoRoadmap}{" "}
-          {urlDaFonte && (
-            <a href={urlDaFonte} target="_blank" rel="noopener noreferrer">
-              {t.abrirFonte} ↗
-            </a>
+      {visao.fontes.map((fonte) => (
+        <Box key={fonte.id} component="section" sx={secao}>
+          <Typography component="h2" variant="h2" sx={tituloDeSecao}>
+            {fonte.titulo[idioma]}
+          </Typography>
+          {(fonte.descricao || fonte.url) && (
+            <Typography sx={{ fontSize: "1rem", maxWidth: "62ch", color: "text.secondary" }}>
+              {fonte.descricao?.[idioma]}{" "}
+              {fonte.url && (
+                <a href={fonte.url} target="_blank" rel="noopener noreferrer">
+                  {t.abrirFonte} ↗
+                </a>
+              )}
+            </Typography>
           )}
-        </Typography>
-        <ListaDeModulos visao={visao} origem="roadmap" />
-      </Box>
+          <ListaDeModulos visao={visao} origem={fonte.id} />
+        </Box>
+      ))}
     </>
   );
 }

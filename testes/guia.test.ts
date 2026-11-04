@@ -13,20 +13,26 @@ import {
 } from "@/lib/guia";
 
 describe("rotuloDaPergunta", () => {
-  it("usa Q para a lista original e R para o roadmap.sh", () => {
+  it("usa Q para a lista original, R para o roadmap.sh e M para a MentorCruise", () => {
     expect(rotuloDaPergunta(1)).toBe("Q01");
     expect(rotuloDaPergunta(30)).toBe("Q30");
     expect(rotuloDaPergunta(101)).toBe("R01");
     expect(rotuloDaPergunta(150)).toBe("R50");
+    expect(rotuloDaPergunta(201)).toBe("M01");
+    expect(rotuloDaPergunta(240)).toBe("M40");
   });
 });
 
 describe("guia de backend", () => {
-  it("tem 80 perguntas, 11 repetidas e 69 explicações distintas", () => {
-    expect(backend.perguntas).toHaveLength(80);
-    expect(backend.perguntas.filter(ehRepetida)).toHaveLength(11);
-    expect(perguntasDistintas(backend)).toHaveLength(69);
-    expect(visaoDoGuia(backend).totalDistinto).toBe(69);
+  it("tem 120 perguntas (30 + 50 + 40), 26 repetidas e 94 explicações distintas", () => {
+    const porFonte = (de: number, ate: number) => backend.perguntas.filter((p) => p.numero >= de && p.numero <= ate);
+    expect(porFonte(1, 99)).toHaveLength(30);
+    expect(porFonte(101, 199)).toHaveLength(50);
+    expect(porFonte(201, 299)).toHaveLength(40);
+    expect(backend.perguntas).toHaveLength(120);
+    expect(backend.perguntas.filter(ehRepetida)).toHaveLength(26);
+    expect(perguntasDistintas(backend)).toHaveLength(94);
+    expect(visaoDoGuia(backend).totalDistinto).toBe(94);
   });
 
   it("pergunta repetida mostra a explicação da original e divide o progresso", () => {

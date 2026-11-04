@@ -12,5 +12,5 @@ export function generateStaticParams() {
 export default async function PaginaDoGuia({ params }: { params: Promise<{ guia: string }> }) {
   const guia = guiaPorId((await params).guia);
   if (!guia) notFound();
-  return <InicioDoGuia visao={visaoDoGuia(guia)} textos={guia.textos} urlDaFonte={guia.fonteExterna?.url} />;
+  return <InicioDoGuia visao={visaoDoGuia(guia)} textos={guia.textos} />;
 }

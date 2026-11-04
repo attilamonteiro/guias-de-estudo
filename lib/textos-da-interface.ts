@@ -90,7 +90,7 @@ export const TEXTOS: Traduzido<TextosDaInterface> = {
     abrirFonte: "Abrir a página de origem",
     mesmaMateriaDa: "Mesma matéria da",
     mesmaMateriaExplicacao:
-      "Esta pergunta do roadmap.sh pede o mesmo conteúdo da pergunta {q}. A explicação completa está abaixo, e marcar como entendida vale para as duas.",
+      "Esta pergunta pede o mesmo conteúdo da pergunta {q}. A explicação completa está abaixo, e marcar como entendida vale para as duas.",
     comoEstudar: "Como estudar",
     passosDeEstudo: [
       {
@@ -160,7 +160,7 @@ export const TEXTOS: Traduzido<TextosDaInterface> = {
     abrirFonte: "Open the source page",
     mesmaMateriaDa: "Same subject as",
     mesmaMateriaExplicacao:
-      "This roadmap.sh question asks for the same content as question {q}. The full explanation is below, and marking it understood counts for both.",
+      "This question asks for the same content as question {q}. The full explanation is below, and marking it understood counts for both.",
     comoEstudar: "How to study",
     passosDeEstudo: [
       {

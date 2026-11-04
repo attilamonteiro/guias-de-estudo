@@ -37,7 +37,7 @@ export function ResumoView({ visao, respostas }: Props) {
               component="span"
               sx={{ fontFamily: FAMILIA_MONO, fontSize: "0.76rem", color: "text.secondary", fontWeight: 500, mr: 1 }}
             >
-              {modulo.letra || "R"}
+              {modulo.marca}
             </Box>
             {modulo.nome[idioma]}
           </Typography>

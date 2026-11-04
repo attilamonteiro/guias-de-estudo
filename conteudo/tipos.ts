@@ -100,7 +100,7 @@ export interface ExplicacaoNoIdioma {
 
 /** Pergunta com explicação própria. */
 export interface PerguntaPropria {
-  /** Número estável, usado no endereço e no progresso. Lista original: 1–99; roadmap.sh: 101–199. */
+  /** Número estável, usado no endereço e no progresso. Lista original: 1–99; roadmap.sh: 101–199; MentorCruise: 201–299. */
   numero: number;
   modulo: string;
   metodo: IdMetodo;
@@ -121,13 +121,24 @@ export type Pergunta = PerguntaPropria | PerguntaRepetida;
 
 /* ---------- guia ---------- */
 
+/** De onde vem um conjunto de perguntas. Cada fonte vira uma seção da página de abertura do guia. */
+export interface Fonte {
+  id: string;
+  /** Letra do selo dos módulos desta fonte quando eles não têm letra própria (R, M…). */
+  marca: string;
+  titulo: Traduzido<string>;
+  descricao?: Traduzido<string>;
+  /** Página de origem, quando as perguntas vêm de um site. */
+  url?: string;
+}
+
 export interface Modulo {
   id: string;
-  /** Letra exibida no índice (A–F); vazia nos módulos do roadmap.sh. */
+  /** Letra exibida no índice e no cabeçalho da pergunta (A–F); vazia nos módulos de fontes externas. */
   letra: string;
   nome: Traduzido<string>;
-  /** Módulos da lista original e do roadmap.sh são listados em seções separadas. */
-  origem: "lista" | "roadmap";
+  /** Id da `Fonte` à qual o módulo pertence. */
+  origem: string;
 }
 
 export interface TextosDoGuia {
@@ -137,9 +148,6 @@ export interface TextosDoGuia {
   /** Título grande da página de abertura do guia. */
   titulo: string;
   introducao: string;
-  secaoDaLista: string;
-  secaoDoRoadmap: string;
-  descricaoDoRoadmap: string;
 }
 
 export interface Guia {
@@ -148,8 +156,7 @@ export interface Guia {
   textos: Traduzido<TextosDoGuia>;
   /** Linha curta no cartão da página inicial. */
   detalhe: string;
+  fontes: Fonte[];
   modulos: Modulo[];
   perguntas: Pergunta[];
-  /** Origem das perguntas do roadmap.sh, quando houver. */
-  fonteExterna?: { url: string };
 }
