@@ -34,6 +34,8 @@ describe("rotuloDaPergunta", () => {
     expect(rotuloDaPergunta(nodejs, 500)).toBe("F100");
     expect(rotuloDaPergunta(nodejs, 501)).toBe("C01");
     expect(rotuloDaPergunta(nodejs, 529)).toBe("C29");
+    expect(rotuloDaPergunta(nodejs, 601)).toBe("G01");
+    expect(rotuloDaPergunta(nodejs, 691)).toBe("G91");
   });
 
   it("os rótulos são únicos dentro de cada guia", () => {
@@ -90,7 +92,7 @@ describe("guia de Node.js", () => {
       .filter((m) => m.origem === origem)
       .map((m) => nodejs.perguntas.filter((p) => p.modulo === m.id).length);
 
-  it("tem 428 perguntas de cinco fontes, 271 repetidas e 157 explicações distintas", () => {
+  it("tem 519 perguntas de seis fontes, 349 repetidas e 170 explicações distintas", () => {
     const porModulo = (id: string) => nodejs.perguntas.filter((p) => p.modulo === id);
     expect(porModulo("turing-basicas")).toHaveLength(22);
     expect(porModulo("turing-intermediarias")).toHaveLength(18);
@@ -99,10 +101,11 @@ describe("guia de Node.js", () => {
     expect(doGuia("devinterview-").map((p) => p.numero)).toEqual(faixa(301, 100));
     expect(doGuia("founditgulf-").map((p) => p.numero)).toEqual(faixa(401, 100));
     expect(doGuia("coderpad-").map((p) => p.numero)).toEqual(faixa(501, 29));
-    expect(nodejs.perguntas).toHaveLength(428);
-    expect(nodejs.perguntas.filter(ehRepetida)).toHaveLength(271);
-    expect(perguntasDistintas(nodejs)).toHaveLength(157);
-    expect(visaoDoGuia(nodejs).totalDistinto).toBe(157);
+    expect(doGuia("gist-").map((p) => p.numero)).toEqual(faixa(601, 91));
+    expect(nodejs.perguntas).toHaveLength(519);
+    expect(nodejs.perguntas.filter(ehRepetida)).toHaveLength(349);
+    expect(perguntasDistintas(nodejs)).toHaveLength(170);
+    expect(visaoDoGuia(nodejs).totalDistinto).toBe(170);
   });
 
   it("os módulos aparecem na ordem em que o guia os declara", () => {
@@ -119,6 +122,7 @@ describe("guia de Node.js", () => {
     expect(tamanhos("devinterview")).toEqual([10, 9, 5, 10, 7, 9, 10, 9, 8, 13, 10]);
     expect(tamanhos("founditgulf")).toEqual([25, 25, 25, 10, 5, 10]);
     expect(tamanhos("coderpad")).toEqual([10, 9, 10]);
+    expect(tamanhos("gist")).toEqual([20, 20, 28, 20, 3]);
   });
 
   it("o CoderPad responde sem bloco de código: a explicação própria dele (C25) não tem nenhum", () => {

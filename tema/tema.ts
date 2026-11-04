@@ -58,6 +58,8 @@ export const tema = createTheme({
             backgroundColor: p.tons.superficie2,
             padding: "0.08em 0.35em",
             borderRadius: 4,
+            // Nomes longos (AmbientCapabilities=CAP_NET_BIND_SERVICE) quebram em vez de abrir rolagem lateral no celular.
+            overflowWrap: "anywhere",
           },
           strong: { fontWeight: 600 },
           ":focus-visible": { outline: `2px solid ${p.primary.main}`, outlineOffset: 2 },

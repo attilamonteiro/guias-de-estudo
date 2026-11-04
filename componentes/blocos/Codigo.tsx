@@ -36,7 +36,7 @@ export function Codigo({ bloco }: { bloco: BlocoCodigo }) {
             fontSize: "0.84rem",
             lineHeight: 1.6,
             color: "codigo.texto",
-            "& code": { background: "none", p: 0, fontSize: "inherit" },
+            "& code": { background: "none", p: 0, fontSize: "inherit", overflowWrap: "normal" },
           }}
         >
           <code>{bloco.codigo}</code>

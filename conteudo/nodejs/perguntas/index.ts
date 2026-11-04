@@ -427,6 +427,97 @@ import { c026 } from "./c026-websocket-com-ws";
 import { c027 } from "./c027-try-catch-e-erros-assincronos";
 import { c028 } from "./c028-cluster-e-nucleos-de-cpu";
 import { c029 } from "./c029-npm-e-dependencias";
+import { g001 } from "./g001-api-assincrona";
+import { g002 } from "./g002-beneficios-do-node-js";
+import { g003 } from "./g003-aplicacao-single-thread";
+import { g004 } from "./g004-instalacao-global";
+import { g005 } from "./g005-callback-error-first";
+import { g006 } from "./g006-erro-operacional-x-de-programacao";
+import { g007 } from "./g007-node-js-ajax-e-jquery";
+import { g008 } from "./g008-requisicao-post";
+import { g009 } from "./g009-principais-recursos";
+import { g010 } from "./g010-funcao-de-controle-de-fluxo";
+import { g011 } from "./g011-event-listeners";
+import { g012 } from "./g012-concorrencia-com-uma-thread";
+import { g013 } from "./g013-callback-hell";
+import { g014 } from "./g014-processo-externo";
+import { g015 } from "./g015-angularjs-x-nodejs";
+import { g016 } from "./g016-observar-arquivos";
+import { g017 } from "./g017-modulos-nativos";
+import { g018 } from "./g018-o-que-e-o-v8";
+import { g019 } from "./g019-o-que-e-o-libuv";
+import { g020 } from "./g020-return-callback-x-chamar-callback";
+import { g021 } from "./g021-repl";
+import { g022 } from "./g022-callback";
+import { g023 } from "./g023-codigo-bloqueante";
+import { g024 } from "./g024-evitar-codigo-bloqueante";
+import { g025 } from "./g025-o-event-loop";
+import { g026 } from "./g026-o-que-e-o-event-emitter";
+import { g027 } from "./g027-finalidade-da-classe-buffer";
+import { g028 } from "./g028-fs-sincrono-x-assincrono";
+import { g029 } from "./g029-o-que-sao-streams";
+import { g030 } from "./g030-encadeamento-chaining";
+import { g031 } from "./g031-temporizadores";
+import { g032 } from "./g032-evitar-callback-hell";
+import { g033 } from "./g033-o-que-e-o-event-loop";
+import { g034 } from "./g034-evitar-callback-hell-no-node-js";
+import { g035 } from "./g035-como-o-node-js-funciona";
+import { g036 } from "./g036-quando-usar-o-node-js";
+import { g037 } from "./g037-threads-filhas";
+import { g038 } from "./g038-resolver-excecoes-nao-tratadas";
+import { g039 } from "./g039-tipos-de-streams";
+import { g040 } from "./g040-objetos-globais";
+import { g041 } from "./g041-piping";
+import { g042 } from "./g042-eventos-dos-streams";
+import { g043 } from "./g043-a-variavel-filename";
+import { g044 } from "./g044-escutar-na-porta-80";
+import { g045 } from "./g045-estilo-de-codigo-consistente";
+import { g046 } from "./g046-o-que-e-um-stub";
+import { g047 } from "./g047-plataformas-multinucleo";
+import { g048 } from "./g048-so-uma-thread";
+import { g049 } from "./g049-quando-nao-usar-o-node-js";
+import { g050 } from "./g050-buffers-x-strings-binarias";
+import { g051 } from "./g051-usar-o-buffer";
+import { g052 } from "./g052-quando-usar-o-eventemitter";
+import { g053 } from "./g053-depurar-aplicacoes";
+import { g054 } from "./g054-de-promises-para-async-await";
+import { g055 } from "./g055-node-js-e-v8";
+import { g056 } from "./g056-n-api-e-addons-nativos";
+import { g057 } from "./g057-o-modulo-domain";
+import { g058 } from "./g058-modulos-node-js-x-es6";
+import { g059 } from "./g059-o-modulo-vm";
+import { g060 } from "./g060-encerramento-gracioso";
+import { g061 } from "./g061-recursos-de-temporizacao";
+import { g062 } from "./g062-uso-do-node-env";
+import { g063 } from "./g063-versoes-lts";
+import { g064 } from "./g064-config-por-ambiente";
+import { g065 } from "./g065-erros-em-codigo-assincrono";
+import { g066 } from "./g066-dependencies-devdependencies-e";
+import { g067 } from "./g067-de-callback-para-promise";
+import { g068 } from "./g068-funcoes-async";
+import { g069 } from "./g069-laco-chrome-x-node-js";
+import { g070 } from "./g070-outros-motores-alem-do-v8";
+import { g071 } from "./g071-escalar-o-node";
+import { g072 } from "./g072-nexttick-x-setimmediate";
+import { g073 } from "./g073-process-out-of-memory";
+import { g074 } from "./g074-reactor-pattern";
+import { g075 } from "./g075-abordagens-de-tratamento-de-erros";
+import { g076 } from "./g076-separar-app-e-server";
+import { g077 } from "./g077-handler-async-sem-try-catch";
+import { g078 } from "./g078-quantas-threads-o-node-cria";
+import { g079 } from "./g079-node-js-sem-o-v8";
+import { g080 } from "./g080-como-o-v8-funciona";
+import { g081 } from "./g081-hidden-classes-no-v8";
+import { g082 } from "./g082-como-o-v8-compila-o-javascript";
+import { g083 } from "./g083-o-libuv-por-dentro";
+import { g084 } from "./g084-cluster-x-balanceador-de-carga";
+import { g085 } from "./g085-v8-templates";
+import { g086 } from "./g086-addons-em-c";
+import { g087 } from "./g087-classes-no-node-js";
+import { g088 } from "./g088-require-x-injecao-de-dependencia";
+import { g089 } from "./g089-eventos-em-ciclo-sincrono";
+import { g090 } from "./g090-eventos-em-ciclo-com-setimmediate";
+import { g091 } from "./g091-eventos-em-ciclo-com-nexttick";
 
 /** Todas as perguntas do guia, na ordem de estudo. Gerado por scripts/gerar-indice-de-perguntas.mts. */
 export const perguntas: Pergunta[] = [
@@ -858,4 +949,95 @@ export const perguntas: Pergunta[] = [
   c027,
   c028,
   c029,
+  g001,
+  g002,
+  g003,
+  g004,
+  g005,
+  g006,
+  g007,
+  g008,
+  g009,
+  g010,
+  g011,
+  g012,
+  g013,
+  g014,
+  g015,
+  g016,
+  g017,
+  g018,
+  g019,
+  g020,
+  g021,
+  g022,
+  g023,
+  g024,
+  g025,
+  g026,
+  g027,
+  g028,
+  g029,
+  g030,
+  g031,
+  g032,
+  g033,
+  g034,
+  g035,
+  g036,
+  g037,
+  g038,
+  g039,
+  g040,
+  g041,
+  g042,
+  g043,
+  g044,
+  g045,
+  g046,
+  g047,
+  g048,
+  g049,
+  g050,
+  g051,
+  g052,
+  g053,
+  g054,
+  g055,
+  g056,
+  g057,
+  g058,
+  g059,
+  g060,
+  g061,
+  g062,
+  g063,
+  g064,
+  g065,
+  g066,
+  g067,
+  g068,
+  g069,
+  g070,
+  g071,
+  g072,
+  g073,
+  g074,
+  g075,
+  g076,
+  g077,
+  g078,
+  g079,
+  g080,
+  g081,
+  g082,
+  g083,
+  g084,
+  g085,
+  g086,
+  g087,
+  g088,
+  g089,
+  g090,
+  g091,
 ];

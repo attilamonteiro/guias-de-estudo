@@ -3,7 +3,7 @@ import { perguntas } from "./perguntas";
 
 export const nodejs: Guia = {
   id: "nodejs",
-  detalhe: "428 perguntas · PT/EN",
+  detalhe: "519 perguntas · PT/EN",
   textos: {
     pt: {
       nome: "Guia de Node.js",
@@ -11,7 +11,7 @@ export const nodejs: Guia = {
         "Perguntas de entrevista sobre Node.js (event loop, módulos, npm, streams, Express, produção, segurança), do básico ao avançado e com cenários, cada uma com o método de explicação mais adequado, armadilhas e autoteste.",
       titulo: "Node.js, do básico ao avançado.",
       introducao:
-        "428 perguntas de entrevista sobre Node.js, de cinco fontes, cada uma explicada com o método que mais combina com ela. Onde várias perguntas pedem a mesma coisa, a explicação é a mesma (são 157 explicações distintas) e o progresso conta uma vez só. Marque o que já domina e treine só o resto.",
+        "519 perguntas de entrevista sobre Node.js, de seis fontes, cada uma explicada com o método que mais combina com ela. Onde várias perguntas pedem a mesma coisa, a explicação é a mesma (são 170 explicações distintas) e o progresso conta uma vez só. Marque o que já domina e treine só o resto.",
     },
     en: {
       nome: "Node.js Guide",
@@ -19,7 +19,7 @@ export const nodejs: Guia = {
         "Node.js interview questions (event loop, modules, npm, streams, Express, production, security), from basic to advanced and with scenarios, each with the best-fitting explanation method, pitfalls and a self-test.",
       titulo: "Node.js, from basics to advanced.",
       introducao:
-        "428 Node.js interview questions, from five sources, each explained with the method that fits it best. Where several questions ask for the same thing, the explanation is the same (157 distinct explanations) and progress counts once. Mark what you already own and drill only the rest.",
+        "519 Node.js interview questions, from six sources, each explained with the method that fits it best. Where several questions ask for the same thing, the explanation is the same (170 distinct explanations) and progress counts once. Mark what you already own and drill only the rest.",
     },
   },
   fontes: [
@@ -77,6 +77,17 @@ export const nodejs: Guia = {
         en: "Questions from coderpad.io, in three levels (junior, intermediate and senior). The source answers with code blocks; here the answers are original explanations, by learning method, and almost all of them reuse an explanation the guide already has (tag “= T”, “= L”, “= D”, “= F” or “= C”).",
       },
       url: "https://coderpad.io/interview-questions/nodejs-interview-questions/",
+    },
+    {
+      id: "gist",
+      marca: "G",
+      base: 600,
+      titulo: { pt: "Gist paulfranco · 91 perguntas", en: "paulfranco gist · 91 questions" },
+      descricao: {
+        pt: "Perguntas do gist “NodeJS Interview Questions”, de paulfranco, por nível de dificuldade (de duas a cinco estrelas), com três trechos de código para analisar no fim. O gist repete algumas perguntas (o bloco de onze do nível quatro e uma sobre single-thread); aqui cada uma entra uma vez só. Os trechos de código são descritos em palavras no enunciado. As respostas são explicações próprias (etiqueta “= T”, “= L”, “= D”, “= F”, “= C” ou “= G”).",
+        en: "Questions from the “NodeJS Interview Questions” gist by paulfranco, by difficulty level (two to five stars), with three code snippets to analyze at the end. The gist repeats some questions (the block of eleven at level four and one about single-threading); here each one appears once. The code snippets are described in words in the question. The answers are original explanations (tag “= T”, “= L”, “= D”, “= F”, “= C” or “= G”).",
+      },
+      url: "https://gist.github.com/paulfranco/9f88a2879b7b7d88de5d1921aef2093b",
     },
   ],
   modulos: [
@@ -282,6 +293,36 @@ export const nodejs: Guia = {
       letra: "",
       origem: "coderpad",
       nome: { pt: "CoderPad · Sênior", en: "CoderPad · Senior" },
+    },
+    {
+      id: "gist-iniciante",
+      letra: "",
+      origem: "gist",
+      nome: { pt: "Gist · Iniciante (★★)", en: "Gist · Beginner (★★)" },
+    },
+    {
+      id: "gist-intermediario",
+      letra: "",
+      origem: "gist",
+      nome: { pt: "Gist · Intermediário (★★★)", en: "Gist · Intermediate (★★★)" },
+    },
+    {
+      id: "gist-avancado",
+      letra: "",
+      origem: "gist",
+      nome: { pt: "Gist · Avançado (★★★★)", en: "Gist · Advanced (★★★★)" },
+    },
+    {
+      id: "gist-especialista",
+      letra: "",
+      origem: "gist",
+      nome: { pt: "Gist · Especialista (★★★★★)", en: "Gist · Expert (★★★★★)" },
+    },
+    {
+      id: "gist-codigo",
+      letra: "",
+      origem: "gist",
+      nome: { pt: "Gist · Código para analisar", en: "Gist · Code to analyze" },
     },
   ],
   perguntas,
