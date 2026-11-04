@@ -9,8 +9,9 @@ Site: https://attilamonteiro.github.io/guias-de-estudo/
 | Guia                                | Conteúdo                                                                                                                                                                                                                                                                                    |
 | ----------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | [Backend](conteudo/backend/guia.ts) | 120 perguntas de entrevista (30 originais + 50 de [roadmap.sh](https://roadmap.sh/questions/backend) + 40 da [MentorCruise](https://mentorcruise.com/questions/backend/)); 26 se repetem e reaproveitam a explicação de outra, então são 94 explicações distintas (progresso conta uma vez) |
+| [Node.js](conteudo/nodejs/guia.ts)  | 61 perguntas de entrevista em três níveis (da [Turing](https://www.turing.com/pt/interview-questions/node-js)); 19 se repetem e reaproveitam a explicação de outra, então são 42 explicações distintas                                                                                      |
 
-As explicações são originais; do roadmap.sh e da MentorCruise vêm apenas os enunciados das perguntas.
+As explicações são originais; do roadmap.sh, da MentorCruise e da Turing vêm apenas os enunciados das perguntas (alguns corrigidos quando a fonte tem erro de tradução ou de digitação).
 
 ## Desenvolver
 

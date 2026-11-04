@@ -17,7 +17,7 @@ export function GradeDeMetodos({ visao }: { visao: VisaoDoGuia }) {
   const distintas = visao.itens.filter((item) => item.repeteA === undefined);
   return (
     <Box sx={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(min(100%, 290px), 1fr))", gap: "12px" }}>
-      {ORDEM_DOS_METODOS.map((id) => {
+      {ORDEM_DOS_METODOS.filter((id) => distintas.some((item) => item.metodo === id)).map((id) => {
         const metodo = METODOS[id][idioma];
         return (
           <Box key={id} sx={{ ...cartao, p: 2, display: "flex", flexDirection: "column", gap: "10px", minWidth: 0 }}>

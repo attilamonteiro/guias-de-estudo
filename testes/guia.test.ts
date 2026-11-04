@@ -1,5 +1,6 @@
 import { describe, expect, it } from "vitest";
 import { backend } from "@/conteudo/backend/guia";
+import { nodejs } from "@/conteudo/nodejs/guia";
 import {
   chaveDeProgresso,
   ehRepetida,
@@ -58,5 +59,24 @@ describe("guia de backend", () => {
     expect(vizinhasDe(backend, numeros[0]).anterior).toBeUndefined();
     expect(vizinhasDe(backend, numeros[0]).proxima?.numero).toBe(numeros[1]);
     expect(vizinhasDe(backend, numeros[numeros.length - 1]).proxima).toBeUndefined();
+  });
+});
+
+describe("guia de Node.js", () => {
+  it("tem 61 perguntas (22 + 18 + 21), 19 repetidas e 42 explicações distintas", () => {
+    const porModulo = (id: string) => nodejs.perguntas.filter((p) => p.modulo === id);
+    expect(porModulo("turing-basicas")).toHaveLength(22);
+    expect(porModulo("turing-intermediarias")).toHaveLength(18);
+    expect(porModulo("turing-avancadas")).toHaveLength(21);
+    expect(nodejs.perguntas.map((p) => p.numero)).toEqual(Array.from({ length: 61 }, (_, i) => i + 1));
+    expect(nodejs.perguntas.filter(ehRepetida)).toHaveLength(19);
+    expect(perguntasDistintas(nodejs)).toHaveLength(42);
+    expect(visaoDoGuia(nodejs).totalDistinto).toBe(42);
+  });
+
+  it("níveis em ordem: básicas antes das intermediárias antes das avançadas", () => {
+    const nivel = { "turing-basicas": 0, "turing-intermediarias": 1, "turing-avancadas": 2 } as Record<string, number>;
+    const niveis = nodejs.perguntas.map((p) => nivel[p.modulo]);
+    expect(niveis).toEqual([...niveis].sort((a, b) => a - b));
   });
 });

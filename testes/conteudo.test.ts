@@ -58,13 +58,15 @@ function testarGuia(guia: Guia) {
 }
 
 describe("arquivos de perguntas", () => {
-  it("todo arquivo da pasta está registrado em perguntas/index.ts", () => {
-    const pasta = join(process.cwd(), "conteudo", "backend", "perguntas");
-    const indice = readFileSync(join(pasta, "index.ts"), "utf8");
-    const arquivos = readdirSync(pasta).filter((nome) => nome.endsWith(".ts") && nome !== "index.ts");
-    const fora = arquivos.filter((nome) => !indice.includes(`"./${nome.replace(/\.ts$/, "")}"`));
-    expect(fora).toEqual([]);
-  });
+  for (const guia of GUIAS) {
+    it(`guia ${guia.id}: todo arquivo da pasta está registrado em perguntas/index.ts`, () => {
+      const pasta = join(process.cwd(), "conteudo", guia.id, "perguntas");
+      const indice = readFileSync(join(pasta, "index.ts"), "utf8");
+      const arquivos = readdirSync(pasta).filter((nome) => nome.endsWith(".ts") && nome !== "index.ts");
+      const fora = arquivos.filter((nome) => !indice.includes(`"./${nome.replace(/\.ts$/, "")}"`));
+      expect(fora).toEqual([]);
+    });
+  }
 });
 
 describe("métodos", () => {

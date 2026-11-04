@@ -26,7 +26,7 @@ export interface TextosDaInterface {
   analogiaLimite: string;
   causaRaiz: string;
   modulo: string;
-  /** Aceita {n}. */
+  /** Aceita {n} (perguntas) e {m} (métodos usados). */
   chamadaDaAbertura: string;
   comecarPelaPrimeira: string;
   irParaOTreino: string;
@@ -84,7 +84,7 @@ export const TEXTOS: Traduzido<TextosDaInterface> = {
     analogiaLimite: "Onde a analogia quebra",
     causaRaiz: "Causa-raiz",
     modulo: "Módulo",
-    chamadaDaAbertura: "{n} perguntas · 8 métodos · PT/EN",
+    chamadaDaAbertura: "{n} perguntas · {m} métodos · PT/EN",
     comecarPelaPrimeira: "Começar pela pergunta 1",
     irParaOTreino: "Ir para o treino",
     abrirFonte: "Abrir a página de origem",
@@ -107,7 +107,7 @@ export const TEXTOS: Traduzido<TextosDaInterface> = {
         texto: "Use o Treino depois de 1, 3 e 7 dias. Marque “entendido” só quando conseguir ensinar.",
       },
     ],
-    osMetodos: "Os 8 métodos e quando cada um entra",
+    osMetodos: "Os métodos deste guia e quando cada um entra",
     melhorPara: "Melhor para",
     resumoTitulo: "Resumo de 30 segundos",
     resumoExplicacao: "Uma frase por pergunta. Use para revisar rápido ou antes de uma entrevista.",
@@ -154,7 +154,7 @@ export const TEXTOS: Traduzido<TextosDaInterface> = {
     analogiaLimite: "Where the analogy breaks",
     causaRaiz: "Root cause",
     modulo: "Module",
-    chamadaDaAbertura: "{n} questions · 8 methods · PT/EN",
+    chamadaDaAbertura: "{n} questions · {m} methods · PT/EN",
     comecarPelaPrimeira: "Start at question 1",
     irParaOTreino: "Go to drill",
     abrirFonte: "Open the source page",
@@ -181,7 +181,7 @@ export const TEXTOS: Traduzido<TextosDaInterface> = {
         texto: "Use the Drill after 1, 3 and 7 days. Mark “understood” only when you can teach it.",
       },
     ],
-    osMetodos: "The 8 methods and when each one applies",
+    osMetodos: "The methods in this guide and when each one applies",
     melhorPara: "Best for",
     resumoTitulo: "30-second cheat sheet",
     resumoExplicacao: "One sentence per question. Use it for quick review or right before an interview.",

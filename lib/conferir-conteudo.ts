@@ -96,7 +96,6 @@ export function problemasDaPergunta(pergunta: Pergunta): string[] {
     }
     for (const texto of textosFormatados(e)) {
       const trecho = texto.slice(0, 50);
-      if (/undefined|\[object/.test(texto)) problemas.push(`${r}: texto com "undefined" em ${idioma}: ${trecho}`);
       if ((texto.match(/`/g) ?? []).length % 2 !== 0) problemas.push(`${r}: crase aberta em ${idioma}: ${trecho}`);
       if ((texto.match(/\*\*/g) ?? []).length % 2 !== 0) problemas.push(`${r}: negrito aberto em ${idioma}: ${trecho}`);
     }

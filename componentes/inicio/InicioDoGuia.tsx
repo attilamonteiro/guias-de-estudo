@@ -29,7 +29,11 @@ export function InicioDoGuia({ visao, textos }: Props) {
   return (
     <>
       <Box component="section">
-        <Typography sx={textoDeRotulo}>{t.chamadaDaAbertura.replace("{n}", String(visao.itens.length))}</Typography>
+        <Typography sx={textoDeRotulo}>
+          {t.chamadaDaAbertura
+            .replace("{n}", String(visao.itens.length))
+            .replace("{m}", String(new Set(visao.itens.map((item) => item.metodo)).size))}
+        </Typography>
         <Typography
           component="h1"
           variant="h1"
