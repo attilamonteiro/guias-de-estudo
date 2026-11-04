@@ -27,14 +27,14 @@ npm run build      # gera out/ (valida os tipos também)
 
 ## Estrutura
 
-| Pasta          | O quê                                                                                                                                                                                                                    |
-| -------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `conteudo/`    | Dados puros, sem React. `tipos.ts` define o esquema; `metodos.ts` os 8 métodos; `guias.ts` registra os guias; `<guia>/guia.ts` descreve um guia e `<guia>/perguntas/` tem **um arquivo por pergunta** (`q01-…`, `r02-…`) |
-| `lib/`         | Regras sem tela: `guia.ts` (números, repetições, projeção leve), `progresso.ts` (funções puras), `armazenamento.ts` e `preferencias.tsx` (idioma e progresso no navegador), `textos-da-interface.ts`                     |
-| `tema/`        | Tema MUI com as cores, fontes e pontos de quebra do site (claro e escuro pelo sistema)                                                                                                                                   |
-| `componentes/` | Um assunto por pasta: `blocos/` (um componente por tipo de bloco), `casca/` (cabeçalho, índice, moldura), `pergunta/`, `inicio/`, `resumo/`, `treino/`, `hub/`, `base/`                                                  |
-| `app/`         | Só as rotas: `/`, `/<guia>/`, `/<guia>/pergunta/<n>/`, `/<guia>/resumo/`, `/<guia>/treino/`                                                                                                                              |
-| `testes/`      | Vitest                                                                                                                                                                                                                   |
+| Pasta          | O quê                                                                                                                                                                                                                                         |
+| -------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `conteudo/`    | Dados puros, sem React. `tipos.ts` define o esquema; `metodos.ts` os 8 métodos; `guias.ts` registra os guias; `<guia>/guia.ts` descreve um guia e `<guia>/perguntas/` tem **um arquivo por pergunta** (`q01-…`, `r02-…`)                      |
+| `lib/`         | Regras sem tela: `guia.ts` (números, repetições, projeção leve), `progresso.ts` (funções puras), `armazenamento.ts` e `preferencias.tsx` (idioma e progresso no navegador), `textos-da-interface.ts`                                          |
+| `tema/`        | Tema MUI com as cores, fontes e pontos de quebra do site (claro e escuro pelo sistema)                                                                                                                                                        |
+| `componentes/` | Um assunto por pasta: `blocos/` (um componente por tipo de bloco), `casca/` (cabeçalho, índice, moldura), `pergunta/`, `inicio/`, `resumo/`, `treino/`, `hub/`, `base/`                                                                       |
+| `app/`         | Só as rotas: `/`, `/<guia>/`, `/<guia>/pergunta/<n>/`, `/<guia>/resumo/`, `/<guia>/treino/` e `/<guia>/indice.json` (o índice de cada guia, baixado uma vez: dentro de cada página ele fazia o site passar de 1 GB, o limite do GitHub Pages) |
+| `testes/`      | Vitest                                                                                                                                                                                                                                        |
 
 ## Adicionar uma pergunta
 

@@ -50,6 +50,8 @@ export interface TextosDaInterface {
   zerarProgresso: string;
   restantesNoTreino: string;
   carregando: string;
+  indiceIndisponivel: string;
+  tentarDeNovo: string;
   paginaNaoEncontrada: string;
   voltarAoInicio: string;
   siteNome: string;
@@ -121,6 +123,8 @@ export const TEXTOS: Traduzido<TextosDaInterface> = {
     zerarProgresso: "Zerar progresso",
     restantesNoTreino: "restantes no treino",
     carregando: "Carregando…",
+    indiceIndisponivel: "Não foi possível carregar o índice.",
+    tentarDeNovo: "Tentar de novo",
     paginaNaoEncontrada: "Página não encontrada",
     voltarAoInicio: "Voltar ao início",
     siteNome: "Guias de Estudo",
@@ -195,6 +199,8 @@ export const TEXTOS: Traduzido<TextosDaInterface> = {
     zerarProgresso: "Reset progress",
     restantesNoTreino: "left in the drill",
     carregando: "Loading…",
+    indiceIndisponivel: "The index could not be loaded.",
+    tentarDeNovo: "Try again",
     paginaNaoEncontrada: "Page not found",
     voltarAoInicio: "Back to home",
     siteNome: "Study Guides",

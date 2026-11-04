@@ -8,7 +8,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { usePreferencias } from "@/lib/preferencias";
 import { rotas } from "@/lib/rotas";
-import type { VisaoDoGuia } from "@/lib/guia";
+import type { ResumoDoGuia } from "@/lib/guia";
 import { LARGURA_MAXIMA, margemLateral } from "@/tema/estilos";
 import { FAMILIA_DISPLAY, FAMILIA_MONO } from "@/tema/familias";
 import { MedidorDeProgresso } from "./MedidorDeProgresso";
@@ -16,19 +16,18 @@ import { SeletorDeIdioma } from "./SeletorDeIdioma";
 import { mesmoCaminho } from "./caminhos";
 
 interface Props {
-  visao: VisaoDoGuia;
+  guia: ResumoDoGuia;
   aoAbrirIndice: () => void;
 }
 
-export function CabecalhoDoGuia({ visao, aoAbrirIndice }: Props) {
+export function CabecalhoDoGuia({ guia, aoAbrirIndice }: Props) {
   const { idioma, t } = usePreferencias();
   const caminho = usePathname();
   const abas = [
-    { rotulo: t.inicio, href: rotas.guia(visao.id) },
-    { rotulo: t.resumo, href: rotas.resumo(visao.id) },
-    { rotulo: t.treino, href: rotas.treino(visao.id) },
+    { rotulo: t.inicio, href: rotas.guia(guia.id) },
+    { rotulo: t.resumo, href: rotas.resumo(guia.id) },
+    { rotulo: t.treino, href: rotas.treino(guia.id) },
   ];
-  const chaves = visao.itens.filter((item) => item.repeteA === undefined).map((item) => item.numero);
 
   return (
     <AppBar
@@ -66,7 +65,7 @@ export function CabecalhoDoGuia({ visao, aoAbrirIndice }: Props) {
         </Button>
         <Box
           component={Link}
-          href={rotas.guia(visao.id)}
+          href={rotas.guia(guia.id)}
           sx={{
             display: "flex",
             alignItems: "center",
@@ -96,9 +95,9 @@ export function CabecalhoDoGuia({ visao, aoAbrirIndice }: Props) {
               borderRadius: 1,
             }}
           >
-            /{visao.itens.length}
+            /{guia.total}
           </Box>
-          <span>{visao.nome[idioma]}</span>
+          <span>{guia.nome[idioma]}</span>
         </Box>
         <Box
           component="nav"
@@ -135,7 +134,7 @@ export function CabecalhoDoGuia({ visao, aoAbrirIndice }: Props) {
           })}
         </Box>
         <SeletorDeIdioma />
-        <MedidorDeProgresso guiaId={visao.id} chaves={chaves} />
+        <MedidorDeProgresso guiaId={guia.id} chaves={guia.chaves} />
       </Toolbar>
     </AppBar>
   );

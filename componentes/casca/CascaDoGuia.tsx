@@ -3,7 +3,7 @@
 import Box from "@mui/material/Box";
 import Drawer from "@mui/material/Drawer";
 import { useCallback, useState, type ReactNode } from "react";
-import type { VisaoDoGuia } from "@/lib/guia";
+import type { ResumoDoGuia } from "@/lib/guia";
 import { ALTURA_DO_CABECALHO, LARGURA_MAXIMA, margemLateral } from "@/tema/estilos";
 import { CabecalhoDoGuia } from "./CabecalhoDoGuia";
 import { ConteudoOuEsqueleto } from "./ConteudoOuEsqueleto";
@@ -13,13 +13,13 @@ import { IndiceLateral } from "./IndiceLateral";
  * Moldura de toda página de um guia: cabeçalho fixo, índice (lateral no desktop, gaveta no celular)
  * e a área de conteúdo. O conteúdo da página chega como `children`.
  */
-export function CascaDoGuia({ visao, children }: { visao: VisaoDoGuia; children: ReactNode }) {
+export function CascaDoGuia({ guia, children }: { guia: ResumoDoGuia; children: ReactNode }) {
   const [gavetaAberta, setGavetaAberta] = useState(false);
   // Estável de propósito: as linhas memorizadas do índice não podem ser refeitas por causa deste callback.
   const fecharGaveta = useCallback(() => setGavetaAberta(false), []);
   return (
     <>
-      <CabecalhoDoGuia visao={visao} aoAbrirIndice={() => setGavetaAberta(true)} />
+      <CabecalhoDoGuia guia={guia} aoAbrirIndice={() => setGavetaAberta(true)} />
       <Box
         sx={{
           ...margemLateral,
@@ -45,7 +45,7 @@ export function CascaDoGuia({ visao, children }: { visao: VisaoDoGuia; children:
             borderColor: "divider",
           }}
         >
-          <IndiceLateral visao={visao} />
+          <IndiceLateral guiaId={guia.id} />
         </Box>
         <Box
           component="main"
@@ -70,7 +70,7 @@ export function CascaDoGuia({ visao, children }: { visao: VisaoDoGuia; children:
           },
         }}
       >
-        <IndiceLateral visao={visao} aoEscolher={fecharGaveta} />
+        <IndiceLateral guiaId={guia.id} aoEscolher={fecharGaveta} />
       </Drawer>
     </>
   );

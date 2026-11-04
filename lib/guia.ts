@@ -52,7 +52,8 @@ export function vizinhasDe(guia: Guia, numero: number): { anterior?: Pergunta; p
 
 /* ---------- projeção leve ----------
  * Tudo o que o índice, os cartões e a busca precisam, sem os blocos de explicação.
- * É isto (e não o guia inteiro) que viaja ao navegador em toda página do guia. */
+ * É isto (e não o guia inteiro) que viaja ao navegador: no JSON do índice, baixado uma vez por guia,
+ * e nas páginas de início, resumo e treino. */
 
 export interface ItemDoIndice {
   numero: number;
@@ -79,6 +80,28 @@ export interface VisaoDoGuia {
   itens: ItemDoIndice[];
   /** Quantidade de explicações distintas (as perguntas repetidas contam uma vez). */
   totalDistinto: number;
+}
+
+/**
+ * O mínimo que o cabeçalho de TODA página do guia precisa. O índice completo (centenas de itens) não
+ * viaja em cada página: o navegador o baixa uma vez, de `/<guia>/indice.json` (ver app/[guia]/indice.json).
+ */
+export interface ResumoDoGuia {
+  id: string;
+  nome: Traduzido<string>;
+  /** Total de perguntas, para o selo do cabeçalho. */
+  total: number;
+  /** Números das explicações distintas (as repetidas não entram): base do medidor de progresso. */
+  chaves: number[];
+}
+
+export function resumoDoGuia(guia: Guia): ResumoDoGuia {
+  return {
+    id: guia.id,
+    nome: { pt: guia.textos.pt.nome, en: guia.textos.en.nome },
+    total: guia.perguntas.length,
+    chaves: perguntasDistintas(guia).map((pergunta) => pergunta.numero),
+  };
 }
 
 export function itensDoIndice(guia: Guia): ItemDoIndice[] {

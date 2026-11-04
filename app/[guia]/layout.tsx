@@ -3,7 +3,7 @@ import { notFound } from "next/navigation";
 import type { ReactNode } from "react";
 import { CascaDoGuia } from "@/componentes/casca/CascaDoGuia";
 import { GUIAS, guiaPorId } from "@/conteudo/guias";
-import { visaoDoGuia } from "@/lib/guia";
+import { resumoDoGuia } from "@/lib/guia";
 
 export const dynamicParams = false;
 
@@ -25,5 +25,5 @@ export default async function LayoutDoGuia({
 }) {
   const guia = guiaPorId((await params).guia);
   if (!guia) notFound();
-  return <CascaDoGuia visao={visaoDoGuia(guia)}>{children}</CascaDoGuia>;
+  return <CascaDoGuia guia={resumoDoGuia(guia)}>{children}</CascaDoGuia>;
 }
