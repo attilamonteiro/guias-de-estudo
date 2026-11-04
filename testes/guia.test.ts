@@ -1,6 +1,7 @@
 import { describe, expect, it } from "vitest";
 import { backend } from "@/conteudo/backend/guia";
 import { nodejs } from "@/conteudo/nodejs/guia";
+import { react } from "@/conteudo/react/guia";
 import {
   chaveDeProgresso,
   ehRepetida,
@@ -40,8 +41,23 @@ describe("rotuloDaPergunta", () => {
     expect(rotuloDaPergunta(nodejs, 800)).toBe("P100");
   });
 
+  it("react: L (LinkedIn), G (Glassdoor), P (pedrincandido), C (Coddy), S (Simplilearn) e M (Medium)", () => {
+    expect(rotuloDaPergunta(react, 1)).toBe("L01");
+    expect(rotuloDaPergunta(react, 221)).toBe("L221");
+    expect(rotuloDaPergunta(react, 301)).toBe("G01");
+    expect(rotuloDaPergunta(react, 344)).toBe("G44");
+    expect(rotuloDaPergunta(react, 401)).toBe("P01");
+    expect(rotuloDaPergunta(react, 418)).toBe("P18");
+    expect(rotuloDaPergunta(react, 501)).toBe("C01");
+    expect(rotuloDaPergunta(react, 533)).toBe("C33");
+    expect(rotuloDaPergunta(react, 601)).toBe("S01");
+    expect(rotuloDaPergunta(react, 697)).toBe("S97");
+    expect(rotuloDaPergunta(react, 701)).toBe("M01");
+    expect(rotuloDaPergunta(react, 748)).toBe("M48");
+  });
+
   it("os rótulos são únicos dentro de cada guia", () => {
-    for (const guia of [backend, nodejs]) {
+    for (const guia of [backend, nodejs, react]) {
       const rotulos = guia.perguntas.map((p) => rotuloDaPergunta(guia, p.numero));
       expect(new Set(rotulos).size, guia.id).toBe(rotulos.length);
     }
@@ -136,5 +152,42 @@ describe("guia de Node.js", () => {
     for (const lingua of [util.pt, util.en]) {
       expect(lingua.blocos.filter((b) => b.tipo === "codigo")).toHaveLength(0);
     }
+  });
+});
+
+describe("guia de React", () => {
+  const doGuia = (origem: string) => react.perguntas.filter((p) => p.modulo.startsWith(origem + "-"));
+  const faixa = (de: number, quantas: number) => Array.from({ length: quantas }, (_, i) => i + de);
+  const tamanhos = (origem: string) =>
+    react.modulos
+      .filter((m) => m.origem === origem)
+      .map((m) => react.perguntas.filter((p) => p.modulo === m.id).length);
+
+  it("tem 461 perguntas de seis fontes, 297 repetidas e 164 explicações distintas", () => {
+    expect(doGuia("linkedin").map((p) => p.numero)).toEqual(faixa(1, 221));
+    expect(doGuia("glassdoor").map((p) => p.numero)).toEqual(faixa(301, 44));
+    expect(doGuia("pedrincandido").map((p) => p.numero)).toEqual(faixa(401, 18));
+    expect(doGuia("coddy").map((p) => p.numero)).toEqual(faixa(501, 33));
+    expect(doGuia("simplilearn").map((p) => p.numero)).toEqual(faixa(601, 97));
+    expect(doGuia("medium").map((p) => p.numero)).toEqual(faixa(701, 48));
+    expect(react.perguntas).toHaveLength(461);
+    expect(react.perguntas.filter(ehRepetida)).toHaveLength(297);
+    expect(perguntasDistintas(react)).toHaveLength(164);
+    expect(visaoDoGuia(react).totalDistinto).toBe(164);
+  });
+
+  it("os módulos aparecem na ordem em que o guia os declara", () => {
+    const ordem = react.modulos.map((m) => m.id);
+    const posicoes = react.perguntas.map((p) => ordem.indexOf(p.modulo));
+    expect(posicoes).toEqual([...posicoes].sort((a, b) => a - b));
+  });
+
+  it("as seções de cada fonte seguem a ordem das listas originais", () => {
+    expect(tamanhos("linkedin")).toEqual([20, 20, 20, 15, 20, 20, 10, 15, 14, 16, 15, 14, 15, 7]);
+    expect(tamanhos("glassdoor")).toEqual([30, 7, 7]);
+    expect(tamanhos("pedrincandido")).toEqual([18]);
+    expect(tamanhos("coddy")).toEqual([10, 12, 11]);
+    expect(tamanhos("simplilearn")).toEqual([6, 9, 9, 4, 8, 9, 3, 6, 15, 7, 6, 8, 7]);
+    expect(tamanhos("medium")).toEqual([24, 24]);
   });
 });

@@ -7,7 +7,7 @@
     "dev": "next dev",
     "build": "next build",
     "typecheck": "tsc --noEmit",
-    "indice": "node scripts/gerar-indice-de-perguntas.mts backend nodejs && prettier --write \"conteudo/*/perguntas/index.ts\"",
+    "indice": "node scripts/gerar-indice-de-perguntas.mts backend nodejs react && prettier --write \"conteudo/*/perguntas/index.ts\"",
     "conferir": "node scripts/conferir-perguntas.mts",
     "test": "vitest run",
     "format": "prettier --write ."
