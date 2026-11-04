@@ -100,7 +100,7 @@ export interface ExplicacaoNoIdioma {
 
 /** Pergunta com explicação própria. */
 export interface PerguntaPropria {
-  /** Número estável, usado no endereço e no progresso. Lista original: 1–99; roadmap.sh: 101–199; MentorCruise: 201–299. */
+  /** Número estável, usado no endereço e no progresso. Cada fonte tem a sua faixa: `Fonte.base + posição na fonte`. */
   numero: number;
   modulo: string;
   metodo: IdMetodo;

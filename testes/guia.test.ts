@@ -23,11 +23,17 @@ describe("rotuloDaPergunta", () => {
     expect(rotuloDaPergunta(backend, 240)).toBe("M40");
   });
 
-  it("nodejs: T para a Turing e L para o artigo do LinkedIn", () => {
+  it("nodejs: T (Turing), L (LinkedIn), D (devinterview.io), F (Found It) e C (CoderPad)", () => {
     expect(rotuloDaPergunta(nodejs, 1)).toBe("T01");
     expect(rotuloDaPergunta(nodejs, 61)).toBe("T61");
     expect(rotuloDaPergunta(nodejs, 101)).toBe("L01");
     expect(rotuloDaPergunta(nodejs, 238)).toBe("L138");
+    expect(rotuloDaPergunta(nodejs, 301)).toBe("D01");
+    expect(rotuloDaPergunta(nodejs, 400)).toBe("D100");
+    expect(rotuloDaPergunta(nodejs, 401)).toBe("F01");
+    expect(rotuloDaPergunta(nodejs, 500)).toBe("F100");
+    expect(rotuloDaPergunta(nodejs, 501)).toBe("C01");
+    expect(rotuloDaPergunta(nodejs, 529)).toBe("C29");
   });
 
   it("os rótulos são únicos dentro de cada guia", () => {
@@ -77,17 +83,26 @@ describe("guia de backend", () => {
 });
 
 describe("guia de Node.js", () => {
-  it("tem 199 perguntas (61 da Turing + 138 do LinkedIn), 95 repetidas e 104 explicações distintas", () => {
+  const doGuia = (prefixo: string) => nodejs.perguntas.filter((p) => p.modulo.startsWith(prefixo));
+  const faixa = (de: number, quantas: number) => Array.from({ length: quantas }, (_, i) => i + de);
+  const tamanhos = (origem: string) =>
+    nodejs.modulos
+      .filter((m) => m.origem === origem)
+      .map((m) => nodejs.perguntas.filter((p) => p.modulo === m.id).length);
+
+  it("tem 428 perguntas de cinco fontes, 271 repetidas e 157 explicações distintas", () => {
     const porModulo = (id: string) => nodejs.perguntas.filter((p) => p.modulo === id);
     expect(porModulo("turing-basicas")).toHaveLength(22);
     expect(porModulo("turing-intermediarias")).toHaveLength(18);
     expect(porModulo("turing-avancadas")).toHaveLength(21);
-    const doLinkedin = nodejs.perguntas.filter((p) => p.modulo.startsWith("linkedin-"));
-    expect(doLinkedin.map((p) => p.numero)).toEqual(Array.from({ length: 138 }, (_, i) => i + 101));
-    expect(nodejs.perguntas).toHaveLength(199);
-    expect(nodejs.perguntas.filter(ehRepetida)).toHaveLength(95);
-    expect(perguntasDistintas(nodejs)).toHaveLength(104);
-    expect(visaoDoGuia(nodejs).totalDistinto).toBe(104);
+    expect(doGuia("linkedin-").map((p) => p.numero)).toEqual(faixa(101, 138));
+    expect(doGuia("devinterview-").map((p) => p.numero)).toEqual(faixa(301, 100));
+    expect(doGuia("founditgulf-").map((p) => p.numero)).toEqual(faixa(401, 100));
+    expect(doGuia("coderpad-").map((p) => p.numero)).toEqual(faixa(501, 29));
+    expect(nodejs.perguntas).toHaveLength(428);
+    expect(nodejs.perguntas.filter(ehRepetida)).toHaveLength(271);
+    expect(perguntasDistintas(nodejs)).toHaveLength(157);
+    expect(visaoDoGuia(nodejs).totalDistinto).toBe(157);
   });
 
   it("os módulos aparecem na ordem em que o guia os declara", () => {
@@ -97,10 +112,21 @@ describe("guia de Node.js", () => {
   });
 
   it("a seção do LinkedIn tem as dez seções do artigo, com 20, 15, 20, 13, 12, 12, 16, 14, 10 e 6 perguntas", () => {
-    const ids = nodejs.modulos.filter((m) => m.origem === "linkedin").map((m) => m.id);
-    expect(ids).toHaveLength(10);
-    expect(ids.map((id) => nodejs.perguntas.filter((p) => p.modulo === id).length)).toEqual([
-      20, 15, 20, 13, 12, 12, 16, 14, 10, 6,
-    ]);
+    expect(tamanhos("linkedin")).toEqual([20, 15, 20, 13, 12, 12, 16, 14, 10, 6]);
+  });
+
+  it("as seções das fontes novas seguem a ordem das listas originais", () => {
+    expect(tamanhos("devinterview")).toEqual([10, 9, 5, 10, 7, 9, 10, 9, 8, 13, 10]);
+    expect(tamanhos("founditgulf")).toEqual([25, 25, 25, 10, 5, 10]);
+    expect(tamanhos("coderpad")).toEqual([10, 9, 10]);
+  });
+
+  it("o CoderPad responde sem bloco de código: a explicação própria dele (C25) não tem nenhum", () => {
+    const util = nodejs.perguntas.find((p) => p.numero === 525);
+    expect(util).toBeDefined();
+    if (!util || ehRepetida(util)) return;
+    for (const lingua of [util.pt, util.en]) {
+      expect(lingua.blocos.filter((b) => b.tipo === "codigo")).toHaveLength(0);
+    }
   });
 });

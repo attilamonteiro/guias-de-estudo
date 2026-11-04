@@ -198,6 +198,235 @@ import { l135 } from "./l135-cenario-3-memoria-sempre-subindo";
 import { l136 } from "./l136-cenario-4-um-endpoint-bloqueia-os-outros";
 import { l137 } from "./l137-cenario-5-100-mil-requisicoes-por-minuto";
 import { l138 } from "./l138-cenario-6-api-de-pagamento-instavel";
+import { d001 } from "./d001-o-que-e-o-node-js";
+import { d002 } from "./d002-threads-filhas";
+import { d003 } from "./d003-programacao-orientada-a-eventos";
+import { d004 } from "./d004-o-event-loop";
+import { d005 } from "./d005-node-js-x-servidores-tradicionais";
+import { d006 } from "./d006-e-s-nao-bloqueante";
+import { d007 } from "./d007-atualizar-o-node-js";
+import { d008 } from "./d008-npm";
+import { d009 } from "./d009-gerenciar-pacotes";
+import { d010 } from "./d010-package-json";
+import { d011 } from "./d011-modulos-nativos";
+import { d012 } from "./d012-servidor-com-http";
+import { d013 } from "./d013-finalidade-do-fs";
+import { d014 } from "./d014-classe-buffer";
+import { d015 } from "./d015-tipos-de-streams";
+import { d016 } from "./d016-ler-e-escrever-arquivos";
+import { d017 } from "./d017-usar-o-eventemitter";
+import { d018 } from "./d018-querystring-e-urlsearchparams";
+import { d019 } from "./d019-o-modulo-path";
+import { d020 } from "./d020-callbacks";
+import { d021 } from "./d021-callback-hell";
+import { d022 } from "./d022-promises";
+import { d023 } from "./d023-async-await";
+import { d024 } from "./d024-fs-sincrono-x-assincrono";
+import { d025 } from "./d025-requisicoes-e-respostas-http";
+import { d026 } from "./d026-o-que-e-o-express";
+import { d027 } from "./d027-criar-uma-api-rest";
+import { d028 } from "./d028-middleware";
+import { d029 } from "./d029-cabecalhos-de-seguranca-e-helmet";
+import { d030 } from "./d030-tratar-erros";
+import { d031 } from "./d031-padrao-error-first";
+import { d032 } from "./d032-tecnicas-de-depuracao";
+import { d033 } from "./d033-process-nexttick";
+import { d034 } from "./d034-o-objeto-global";
+import { d035 } from "./d035-frameworks-de-teste";
+import { d036 } from "./d036-mocks-stubs-e-spies";
+import { d037 } from "./d037-benchmark-e-teste-de-carga";
+import { d038 } from "./d038-testar-um-servidor-http";
+import { d039 } from "./d039-conectar-ao-mysql";
+import { d040 } from "./d040-mongodb-e-bancos-nosql";
+import { d041 } from "./d041-o-papel-do-orm";
+import { d042 } from "./d042-monitorar-o-desempenho";
+import { d043 } from "./d043-clustering";
+import { d044 } from "./d044-evitar-vazamentos-de-memoria";
+import { d045 } from "./d045-a-flag-inspect";
+import { d046 } from "./d046-concorrencia";
+import { d047 } from "./d047-process-x-child-process";
+import { d048 } from "./d048-worker-threads";
+import { d049 } from "./d049-node-js-em-microsservicos";
+import { d050 } from "./d050-comunicacao-entre-servicos";
+import { d051 } from "./d051-boas-praticas-de-seguranca";
+import { d052 } from "./d052-proteger-contra-xss";
+import { d053 } from "./d053-variaveis-de-ambiente";
+import { d054 } from "./d054-websockets";
+import { d055 } from "./d055-montar-um-servidor-websocket";
+import { d056 } from "./d056-implantar-em-producao";
+import { d057 } from "./d057-pm2";
+import { d058 } from "./d058-docker-com-node-js";
+import { d059 } from "./d059-versionar-a-api";
+import { d060 } from "./d060-versionamento-semantico";
+import { d061 } from "./d061-exports-x-module-exports";
+import { d062 } from "./d062-servidor-tcp-com-net";
+import { d063 } from "./d063-repl";
+import { d064 } from "./d064-proxy-reverso";
+import { d065 } from "./d065-streams-e-desempenho";
+import { d066 } from "./d066-frameworks-populares";
+import { d067 } from "./d067-koa-x-express";
+import { d068 } from "./d068-nestjs";
+import { d069 } from "./d069-typescript-com-node-js";
+import { d070 } from "./d070-integrar-com-api-de-terceiros";
+import { d071 } from "./d071-socket-io";
+import { d072 } from "./d072-graphql-com-node-js";
+import { d073 } from "./d073-node-js-e-front-end";
+import { d074 } from "./d074-renderizacao-no-servidor-ssr";
+import { d075 } from "./d075-convencoes-e-boas-praticas";
+import { d076 } from "./d076-twelve-factor-app";
+import { d077 } from "./d077-lint-de-codigo";
+import { d078 } from "./d078-estrategias-de-escala";
+import { d079 } from "./d079-sessoes-em-aplicacao-escalada";
+import { d080 } from "./d080-microsservicos-e-escala";
+import { d081 } from "./d081-filas-de-mensagens";
+import { d082 } from "./d082-rabbitmq-no-node-js";
+import { d083 } from "./d083-zeromq";
+import { d084 } from "./d084-nuvem-e-node-js";
+import { d085 } from "./d085-serverless-e-node-js";
+import { d086 } from "./d086-varias-versoes-do-node-js";
+import { d087 } from "./d087-arquivos-env";
+import { d088 } from "./d088-modulo-config";
+import { d089 } from "./d089-ci-cd-para-node-js";
+import { d090 } from "./d090-montar-um-pipeline-de-ci-cd";
+import { d091 } from "./d091-aplicacao-lenta";
+import { d092 } from "./d092-upload-de-arquivos";
+import { d093 } from "./d093-computacao-pesada";
+import { d094 } from "./d094-node-js-e-devops";
+import { d095 } from "./d095-conteinerizacao";
+import { d096 } from "./d096-node-js-em-iot";
+import { d097 } from "./d097-consideracoes-para-iot";
+import { d098 } from "./d098-machine-learning-com-node-js";
+import { d099 } from "./d099-bibliotecas-de-ml-para-node-js";
+import { d100 } from "./d100-boas-praticas-de-apis-rest";
+import { f001 } from "./f001-o-que-e-o-node-js";
+import { f002 } from "./f002-por-que-single-thread";
+import { f003 } from "./f003-funcao-do-event-loop";
+import { f004 } from "./f004-principais-vantagens";
+import { f005 } from "./f005-npm";
+import { f006 } from "./f006-node-js-x-javascript";
+import { f007 } from "./f007-e-s-nao-bloqueante";
+import { f008 } from "./f008-o-que-sao-streams";
+import { f009 } from "./f009-nexttick-x-setimmediate";
+import { f010 } from "./f010-processos-filhos";
+import { f011 } from "./f011-repl";
+import { f012 } from "./f012-objetos-globais";
+import { f013 } from "./f013-funcao-de-callback";
+import { f014 } from "./f014-promises";
+import { f015 } from "./f015-evitar-callback-hell";
+import { f016 } from "./f016-classe-eventemitter";
+import { f017 } from "./f017-servidor-simples";
+import { f018 } from "./f018-streams-ou-buffers";
+import { f019 } from "./f019-finalidade-dos-buffers";
+import { f020 } from "./f020-process-env";
+import { f021 } from "./f021-middleware-no-express";
+import { f022 } from "./f022-tratar-excecoes";
+import { f023 } from "./f023-melhorar-o-desempenho";
+import { f024 } from "./f024-template-engines";
+import { f025 } from "./f025-papel-do-package-json";
+import { f026 } from "./f026-modulos-commonjs";
+import { f027 } from "./f027-exports-x-module-exports";
+import { f028 } from "./f028-fases-do-event-loop";
+import { f029 } from "./f029-o-this-nos-modulos";
+import { f030 } from "./f030-encadeamento-de-middleware";
+import { f031 } from "./f031-node-env";
+import { f032 } from "./f032-compartilhar-dados-entre-modulos";
+import { f033 } from "./f033-spawn-x-fork";
+import { f034 } from "./f034-clustering";
+import { f035 } from "./f035-proteger-a-aplicacao";
+import { f036 } from "./f036-process-exit-x-process-kill";
+import { f037 } from "./f037-vantagens-dos-streams";
+import { f038 } from "./f038-cache-de-modulos";
+import { f039 } from "./f039-rate-limiting-de-api";
+import { f040 } from "./f040-para-que-serve-async-await";
+import { f041 } from "./f041-uploads-de-arquivos";
+import { f042 } from "./f042-cors";
+import { f043 } from "./f043-put-x-patch";
+import { f044 } from "./f044-sessoes-no-node-js";
+import { f045 } from "./f045-monitorar-em-producao";
+import { f046 } from "./f046-o-que-e-o-helmet";
+import { f047 } from "./f047-xss-e-prevencao";
+import { f048 } from "./f048-erros-assincronos-no-express";
+import { f049 } from "./f049-redis-com-node-js";
+import { f050 } from "./f050-implantar-o-node-js";
+import { f051 } from "./f051-sincrono-x-assincrono";
+import { f052 } from "./f052-uso-do-process-nexttick";
+import { f053 } from "./f053-worker-threads";
+import { f054 } from "./f054-balanceamento-de-carga";
+import { f055 } from "./f055-instalacao-global-x-local";
+import { f056 } from "./f056-o-modulo-http-2";
+import { f057 } from "./f057-erros-em-middleware";
+import { f058 } from "./f058-criar-um-eventemitter";
+import { f059 } from "./f059-readfile-x-createreadstream";
+import { f060 } from "./f060-o-papel-do-libuv";
+import { f061 } from "./f061-o-evento-exit-do-processo";
+import { f062 } from "./f062-sinais-no-node-js";
+import { f063 } from "./f063-processo-zumbi";
+import { f064 } from "./f064-server-push-no-http-2";
+import { f065 } from "./f065-tls-ssl-e-https";
+import { f066 } from "./f066-coleta-de-lixo-gc";
+import { f067 } from "./f067-async-hooks";
+import { f068 } from "./f068-o-modulo-dns";
+import { f069 } from "./f069-o-modulo-cluster";
+import { f070 } from "./f070-fork-x-spawn";
+import { f071 } from "./f071-sticky-sessions";
+import { f072 } from "./f072-depurar-no-node-js";
+import { f073 } from "./f073-npm-audit";
+import { f074 } from "./f074-dependencias-peer";
+import { f075 } from "./f075-dependencias-circulares";
+import { f076 } from "./f076-picos-de-trafego";
+import { f077 } from "./f077-logs";
+import { f078 } from "./f078-proteger-chaves-de-api";
+import { f079 } from "./f079-projetar-uma-api-rest";
+import { f080 } from "./f080-uploads-seguros";
+import { f081 } from "./f081-tarefas-em-segundo-plano";
+import { f082 } from "./f082-comunicacao-por-websocket";
+import { f083 } from "./f083-projetar-um-servidor-de-chat";
+import { f084 } from "./f084-versionamento-de-api";
+import { f085 } from "./f085-otimizar-o-desempenho";
+import { f086 } from "./f086-principais-recursos";
+import { f087 } from "./f087-package-lock-json";
+import { f088 } from "./f088-o-modulo-http";
+import { f089 } from "./f089-o-modulo-util";
+import { f090 } from "./f090-como-o-require-funciona";
+import { f091 } from "./f091-rate-limiting";
+import { f092 } from "./f092-variaveis-de-ambiente-seguras";
+import { f093 } from "./f093-redis-em-um-projeto";
+import { f094 } from "./f094-forca-bruta";
+import { f095 } from "./f095-tratamento-global-de-erros";
+import { f096 } from "./f096-autenticacao-com-jwt";
+import { f097 } from "./f097-teste-de-carga";
+import { f098 } from "./f098-condicoes-de-corrida";
+import { f099 } from "./f099-starvation-do-event-loop";
+import { f100 } from "./f100-otimizar-o-uso-de-memoria";
+import { c001 } from "./c001-node-js-como-runtime";
+import { c002 } from "./c002-papel-do-npm";
+import { c003 } from "./c003-modulos-e-reutilizacao";
+import { c004 } from "./c004-callbacks-e-assincronia";
+import { c005 } from "./c005-a-funcao-require";
+import { c006 } from "./c006-event-loop-e-e-s";
+import { c007 } from "./c007-o-modulo-fs";
+import { c008 } from "./c008-o-modulo-http";
+import { c009 } from "./c009-a-ferramenta-npm";
+import { c010 } from "./c010-middleware-no-express";
+import { c011 } from "./c011-callbacks-na-pratica";
+import { c012 } from "./c012-npm-e-seu-significado";
+import { c013 } from "./c013-middleware-em-aplicacoes-web";
+import { c014 } from "./c014-o-papel-do-event-loop";
+import { c015 } from "./c015-promises-e-assincronia";
+import { c016 } from "./c016-streams-e-dados-grandes";
+import { c017 } from "./c017-finalidade-do-express";
+import { c018 } from "./c018-autenticacao-e-autorizacao";
+import { c019 } from "./c019-sessoes-e-cookies";
+import { c020 } from "./c020-assincronia-e-escalabilidade";
+import { c021 } from "./c021-evitar-bloquear-o-event-loop";
+import { c022 } from "./c022-o-objeto-module-exports";
+import { c023 } from "./c023-middleware-uso-e-exemplo";
+import { c024 } from "./c024-streams-leitura-e-escrita";
+import { c025 } from "./c025-o-modulo-util-e-promisify";
+import { c026 } from "./c026-websocket-com-ws";
+import { c027 } from "./c027-try-catch-e-erros-assincronos";
+import { c028 } from "./c028-cluster-e-nucleos-de-cpu";
+import { c029 } from "./c029-npm-e-dependencias";
 
 /** Todas as perguntas do guia, na ordem de estudo. Gerado por scripts/gerar-indice-de-perguntas.mts. */
 export const perguntas: Pergunta[] = [
@@ -400,4 +629,233 @@ export const perguntas: Pergunta[] = [
   l136,
   l137,
   l138,
+  d001,
+  d002,
+  d003,
+  d004,
+  d005,
+  d006,
+  d007,
+  d008,
+  d009,
+  d010,
+  d011,
+  d012,
+  d013,
+  d014,
+  d015,
+  d016,
+  d017,
+  d018,
+  d019,
+  d020,
+  d021,
+  d022,
+  d023,
+  d024,
+  d025,
+  d026,
+  d027,
+  d028,
+  d029,
+  d030,
+  d031,
+  d032,
+  d033,
+  d034,
+  d035,
+  d036,
+  d037,
+  d038,
+  d039,
+  d040,
+  d041,
+  d042,
+  d043,
+  d044,
+  d045,
+  d046,
+  d047,
+  d048,
+  d049,
+  d050,
+  d051,
+  d052,
+  d053,
+  d054,
+  d055,
+  d056,
+  d057,
+  d058,
+  d059,
+  d060,
+  d061,
+  d062,
+  d063,
+  d064,
+  d065,
+  d066,
+  d067,
+  d068,
+  d069,
+  d070,
+  d071,
+  d072,
+  d073,
+  d074,
+  d075,
+  d076,
+  d077,
+  d078,
+  d079,
+  d080,
+  d081,
+  d082,
+  d083,
+  d084,
+  d085,
+  d086,
+  d087,
+  d088,
+  d089,
+  d090,
+  d091,
+  d092,
+  d093,
+  d094,
+  d095,
+  d096,
+  d097,
+  d098,
+  d099,
+  d100,
+  f001,
+  f002,
+  f003,
+  f004,
+  f005,
+  f006,
+  f007,
+  f008,
+  f009,
+  f010,
+  f011,
+  f012,
+  f013,
+  f014,
+  f015,
+  f016,
+  f017,
+  f018,
+  f019,
+  f020,
+  f021,
+  f022,
+  f023,
+  f024,
+  f025,
+  f026,
+  f027,
+  f028,
+  f029,
+  f030,
+  f031,
+  f032,
+  f033,
+  f034,
+  f035,
+  f036,
+  f037,
+  f038,
+  f039,
+  f040,
+  f041,
+  f042,
+  f043,
+  f044,
+  f045,
+  f046,
+  f047,
+  f048,
+  f049,
+  f050,
+  f051,
+  f052,
+  f053,
+  f054,
+  f055,
+  f056,
+  f057,
+  f058,
+  f059,
+  f060,
+  f061,
+  f062,
+  f063,
+  f064,
+  f065,
+  f066,
+  f067,
+  f068,
+  f069,
+  f070,
+  f071,
+  f072,
+  f073,
+  f074,
+  f075,
+  f076,
+  f077,
+  f078,
+  f079,
+  f080,
+  f081,
+  f082,
+  f083,
+  f084,
+  f085,
+  f086,
+  f087,
+  f088,
+  f089,
+  f090,
+  f091,
+  f092,
+  f093,
+  f094,
+  f095,
+  f096,
+  f097,
+  f098,
+  f099,
+  f100,
+  c001,
+  c002,
+  c003,
+  c004,
+  c005,
+  c006,
+  c007,
+  c008,
+  c009,
+  c010,
+  c011,
+  c012,
+  c013,
+  c014,
+  c015,
+  c016,
+  c017,
+  c018,
+  c019,
+  c020,
+  c021,
+  c022,
+  c023,
+  c024,
+  c025,
+  c026,
+  c027,
+  c028,
+  c029,
 ];
