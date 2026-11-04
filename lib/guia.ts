@@ -1,0 +1,84 @@
+// Regras de leitura de um guia: números, repetições entre listas e a projeção leve usada pela interface.
+import type { Guia, IdMetodo, Modulo, Pergunta, PerguntaPropria, PerguntaRepetida, Traduzido } from "@/conteudo/tipos";
+
+export function ehRepetida(pergunta: Pergunta): pergunta is PerguntaRepetida {
+  return "repeteA" in pergunta;
+}
+
+/** Q01…Q30 na lista original, R01…R50 no roadmap.sh (números a partir de 101). */
+export function rotuloDaPergunta(numero: number): string {
+  const dois = (n: number) => String(n).padStart(2, "0");
+  return numero < 100 ? `Q${dois(numero)}` : `R${dois(numero - 100)}`;
+}
+
+export function perguntaPorNumero(guia: Guia, numero: number): Pergunta | undefined {
+  return guia.perguntas.find((pergunta) => pergunta.numero === numero);
+}
+
+/** A pergunta que carrega a explicação: ela mesma ou, se repetir outra, a outra. */
+export function perguntaComExplicacao(guia: Guia, pergunta: Pergunta): PerguntaPropria {
+  if (!ehRepetida(pergunta)) return pergunta;
+  const alvo = perguntaPorNumero(guia, pergunta.repeteA);
+  if (!alvo || ehRepetida(alvo))
+    throw new Error(`Pergunta ${pergunta.numero} repete ${pergunta.repeteA}, que não tem explicação própria`);
+  return alvo;
+}
+
+/** Perguntas repetidas compartilham o progresso da original. */
+export function chaveDeProgresso(pergunta: Pergunta): number {
+  return ehRepetida(pergunta) ? pergunta.repeteA : pergunta.numero;
+}
+
+export function perguntasDistintas(guia: Guia): PerguntaPropria[] {
+  return guia.perguntas.filter((pergunta): pergunta is PerguntaPropria => !ehRepetida(pergunta));
+}
+
+export function vizinhasDe(guia: Guia, numero: number): { anterior?: Pergunta; proxima?: Pergunta } {
+  const i = guia.perguntas.findIndex((pergunta) => pergunta.numero === numero);
+  return { anterior: guia.perguntas[i - 1], proxima: guia.perguntas[i + 1] };
+}
+
+/* ---------- projeção leve ----------
+ * Tudo o que o índice, os cartões e a busca precisam, sem os blocos de explicação.
+ * É isto (e não o guia inteiro) que viaja ao navegador em toda página do guia. */
+
+export interface ItemDoIndice {
+  numero: number;
+  modulo: string;
+  metodo: IdMetodo;
+  repeteA?: number;
+  chaveDeProgresso: number;
+  titulo: Traduzido<string>;
+  pergunta: Traduzido<string>;
+}
+
+export interface VisaoDoGuia {
+  id: string;
+  nome: Traduzido<string>;
+  modulos: Modulo[];
+  itens: ItemDoIndice[];
+  /** Quantidade de explicações distintas (as perguntas repetidas contam uma vez). */
+  totalDistinto: number;
+}
+
+export function itensDoIndice(guia: Guia): ItemDoIndice[] {
+  return guia.perguntas.map((pergunta) => ({
+    numero: pergunta.numero,
+    modulo: pergunta.modulo,
+    metodo: perguntaComExplicacao(guia, pergunta).metodo,
+    repeteA: ehRepetida(pergunta) ? pergunta.repeteA : undefined,
+    chaveDeProgresso: chaveDeProgresso(pergunta),
+    titulo: { pt: pergunta.pt.titulo, en: pergunta.en.titulo },
+    pergunta: { pt: pergunta.pt.pergunta, en: pergunta.en.pergunta },
+  }));
+}
+
+export function visaoDoGuia(guia: Guia): VisaoDoGuia {
+  return {
+    id: guia.id,
+    nome: { pt: guia.textos.pt.nome, en: guia.textos.en.nome },
+    modulos: guia.modulos,
+    itens: itensDoIndice(guia),
+    totalDistinto: perguntasDistintas(guia).length,
+  };
+}
