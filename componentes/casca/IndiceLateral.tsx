@@ -7,7 +7,7 @@ import Typography from "@mui/material/Typography";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
-import { rotuloDaPergunta, type VisaoDoGuia } from "@/lib/guia";
+import type { VisaoDoGuia } from "@/lib/guia";
 import { usePreferencias, useProgresso } from "@/lib/preferencias";
 import { rotas } from "@/lib/rotas";
 import { paletaDe } from "@/tema/cores";
@@ -35,10 +35,7 @@ export function IndiceLateral({ visao, aoEscolher }: Props) {
       itens: visao.itens.filter(
         (item) =>
           item.modulo === modulo.id &&
-          (!termo ||
-            `${rotuloDaPergunta(item.numero)} ${item.titulo[idioma]} ${item.pergunta[idioma]}`
-              .toLowerCase()
-              .includes(termo)),
+          (!termo || `${item.rotulo} ${item.titulo[idioma]} ${item.pergunta[idioma]}`.toLowerCase().includes(termo)),
       ),
     }))
     .filter((grupo) => grupo.itens.length > 0);
@@ -76,7 +73,7 @@ export function IndiceLateral({ visao, aoEscolher }: Props) {
                   aria-current={atual ? "page" : undefined}
                   sx={{
                     display: "grid",
-                    gridTemplateColumns: "30px 1fr 16px",
+                    gridTemplateColumns: "40px 1fr 16px",
                     alignItems: "center",
                     gap: "6px",
                     px: 1,
@@ -89,7 +86,7 @@ export function IndiceLateral({ visao, aoEscolher }: Props) {
                   }}
                 >
                   <Box component="span" sx={{ fontFamily: FAMILIA_MONO, fontSize: "0.78rem", color: "text.secondary" }}>
-                    {item.numero < 100 ? String(item.numero).padStart(2, "0") : rotuloDaPergunta(item.numero)}
+                    {item.rotulo}
                   </Box>
                   <span>{item.titulo[idioma]}</span>
                   <Box

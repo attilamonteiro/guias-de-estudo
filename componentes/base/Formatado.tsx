@@ -1,19 +1,20 @@
 import { Fragment } from "react";
+import { tokenizarTexto } from "@/lib/texto-formatado";
 
-const MARCACOES = /(`[^`]+`|\*\*[^*]+\*\*)/g;
-
-/** Texto com `código` e **negrito**, sem HTML bruto (o React escapa o resto). */
+/** Texto com `código` e **negrito** (que pode conter código), sem HTML bruto: o React escapa o resto. */
 export function Formatado({ texto }: { texto: string }) {
   return (
     <>
-      {texto.split(MARCACOES).map((trecho, i) => {
-        if (trecho.length > 2 && trecho.startsWith("`") && trecho.endsWith("`")) {
-          return <code key={i}>{trecho.slice(1, -1)}</code>;
+      {tokenizarTexto(texto).map((trecho, i) => {
+        if (trecho.tipo === "codigo") return <code key={i}>{trecho.valor}</code>;
+        if (trecho.tipo === "negrito") {
+          return (
+            <strong key={i}>
+              <Formatado texto={trecho.valor} />
+            </strong>
+          );
         }
-        if (trecho.length > 4 && trecho.startsWith("**") && trecho.endsWith("**")) {
-          return <strong key={i}>{trecho.slice(2, -2)}</strong>;
-        }
-        return <Fragment key={i}>{trecho}</Fragment>;
+        return <Fragment key={i}>{trecho.valor}</Fragment>;
       })}
     </>
   );

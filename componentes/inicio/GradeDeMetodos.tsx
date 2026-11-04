@@ -4,7 +4,7 @@ import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import Link from "next/link";
 import { METODOS, ORDEM_DOS_METODOS } from "@/conteudo/metodos";
-import { rotuloDaPergunta, type VisaoDoGuia } from "@/lib/guia";
+import type { VisaoDoGuia } from "@/lib/guia";
 import { usePreferencias } from "@/lib/preferencias";
 import { rotas } from "@/lib/rotas";
 import { cartao } from "@/tema/estilos";
@@ -54,7 +54,7 @@ export function GradeDeMetodos({ visao }: { visao: VisaoDoGuia }) {
                       "&:hover": { borderColor: "primary.main" },
                     }}
                   >
-                    {rotuloDaPergunta(item.numero)}
+                    {item.rotulo}
                   </Box>
                 ))}
             </Box>

@@ -3,7 +3,7 @@
 import Box from "@mui/material/Box";
 import CardActionArea from "@mui/material/CardActionArea";
 import Link from "next/link";
-import { rotuloDaPergunta, type ItemDoIndice } from "@/lib/guia";
+import type { ItemDoIndice } from "@/lib/guia";
 import { usePreferencias, useProgresso } from "@/lib/preferencias";
 import { rotas } from "@/lib/rotas";
 import { misturar, paletaDe } from "@/tema/cores";
@@ -35,8 +35,8 @@ export function CartaoDePergunta({ guiaId, item }: { guiaId: string; item: ItemD
     >
       <Box sx={{ display: "flex", justifyContent: "space-between", alignItems: "center", gap: 1 }}>
         <Box component="span" sx={{ fontFamily: FAMILIA_MONO, fontSize: "0.8rem", color: "text.secondary" }}>
-          {rotuloDaPergunta(item.numero)}
-          {item.repeteA !== undefined && ` = ${rotuloDaPergunta(item.repeteA)}`}
+          {item.rotulo}
+          {item.repeteARotulo && ` = ${item.repeteARotulo}`}
           {feita && " ✓"}
         </Box>
         <ChipDoMetodo metodo={item.metodo} />

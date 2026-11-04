@@ -6,12 +6,12 @@ Site: https://attilamonteiro.github.io/guias-de-estudo/
 
 ## Guias
 
-| Guia                                | Conteúdo                                                                                                                                                                                                                                                                                    |
-| ----------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| [Backend](conteudo/backend/guia.ts) | 120 perguntas de entrevista (30 originais + 50 de [roadmap.sh](https://roadmap.sh/questions/backend) + 40 da [MentorCruise](https://mentorcruise.com/questions/backend/)); 26 se repetem e reaproveitam a explicação de outra, então são 94 explicações distintas (progresso conta uma vez) |
-| [Node.js](conteudo/nodejs/guia.ts)  | 61 perguntas de entrevista em três níveis (da [Turing](https://www.turing.com/pt/interview-questions/node-js)); 19 se repetem e reaproveitam a explicação de outra, então são 42 explicações distintas                                                                                      |
+| Guia                                | Conteúdo                                                                                                                                                                                                                                                                                                                                                                             |
+| ----------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| [Backend](conteudo/backend/guia.ts) | 120 perguntas de entrevista (30 originais + 50 de [roadmap.sh](https://roadmap.sh/questions/backend) + 40 da [MentorCruise](https://mentorcruise.com/questions/backend/)); 26 se repetem e reaproveitam a explicação de outra, então são 94 explicações distintas (progresso conta uma vez)                                                                                          |
+| [Node.js](conteudo/nodejs/guia.ts)  | 199 perguntas de entrevista: 61 em três níveis (da [Turing](https://www.turing.com/pt/interview-questions/node-js)) e 138 de um [artigo no LinkedIn](https://www.linkedin.com/pulse/nodejs-interview-guide-2026-130-questions-every-backend-ashish-misal-l3stc/) (dez seções, com cenários); 95 se repetem e reaproveitam a explicação de outra, então são 104 explicações distintas |
 
-As explicações são originais; do roadmap.sh, da MentorCruise e da Turing vêm apenas os enunciados das perguntas (alguns corrigidos quando a fonte tem erro de tradução ou de digitação).
+As explicações são originais; do roadmap.sh, da MentorCruise, da Turing e do artigo do LinkedIn vêm apenas os enunciados das perguntas (alguns corrigidos quando a fonte tem erro de tradução ou de digitação).
 
 ## Desenvolver
 
@@ -39,7 +39,7 @@ npm run build      # gera out/ (valida os tipos também)
 
 Crie `conteudo/<guia>/perguntas/<id>-<slug>.ts` exportando uma `Pergunta` (copie uma existente). Confira o arquivo com `npm run conferir -- conteudo/backend/perguntas/<arquivo>.ts` e registre-o com `npm run indice` (regenera `perguntas/index.ts` em ordem de número). Os testes reprovam número repetido, módulo inexistente, diferença de estrutura entre PT e EN e marcação `` ` `` / `**` aberta.
 
-Se a pergunta pede o mesmo conteúdo de outra, escreva só o enunciado com `repeteA: <número da outra>` (veja os arquivos `m06-…`): ela mostra a explicação da outra e o progresso conta uma vez. O número segue a fonte: 1–99 lista original, 101–199 roadmap.sh, 201–299 MentorCruise.
+Se a pergunta pede o mesmo conteúdo de outra, escreva só o enunciado com `repeteA: <número da outra>` (veja os arquivos `m06-…`): ela mostra a explicação da outra e o progresso conta uma vez. O número segue a fonte, e o rótulo (Q01, R01, M01, T01, L01…) sai do selo (`Fonte.marca`) e da posição na fonte (`número − Fonte.base`): no backend, 1–99 lista original, 101–199 roadmap.sh e 201–299 MentorCruise; no Node.js, 1–99 Turing e 101–199 LinkedIn (o guia define as faixas em `conteudo/<guia>/guia.ts`).
 
 ## Adicionar um guia
 

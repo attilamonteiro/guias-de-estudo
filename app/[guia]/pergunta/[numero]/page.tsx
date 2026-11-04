@@ -26,7 +26,7 @@ export async function generateMetadata({ params }: { params: Promise<Parametros>
   const guia = guiaPorId(id);
   const pergunta = guia && perguntaPorNumero(guia, Number(numero));
   return pergunta
-    ? { title: `${rotuloDaPergunta(pergunta.numero)} · ${pergunta.pt.titulo}`, description: pergunta.pt.pergunta }
+    ? { title: `${rotuloDaPergunta(guia, pergunta.numero)} · ${pergunta.pt.titulo}`, description: pergunta.pt.pergunta }
     : {};
 }
 
@@ -43,16 +43,21 @@ export default async function PaginaDaPergunta({ params }: { params: Promise<Par
   const dados: DadosDaPergunta = {
     guiaId: guia.id,
     numero: pergunta.numero,
+    rotulo: rotuloDaPergunta(guia, pergunta.numero),
     chaveDeProgresso: chaveDeProgresso(pergunta),
     modulo,
     textos: {
       pt: { titulo: pergunta.pt.titulo, pergunta: pergunta.pt.pergunta },
       en: { titulo: pergunta.en.titulo, pergunta: pergunta.en.pergunta },
     },
-    repeteA: original && { numero: original.numero, titulo: { pt: original.pt.titulo, en: original.en.titulo } },
+    repeteA: original && {
+      numero: original.numero,
+      rotulo: rotuloDaPergunta(guia, original.numero),
+      titulo: { pt: original.pt.titulo, en: original.en.titulo },
+    },
     explicacao: perguntaComExplicacao(guia, pergunta),
-    anterior: anterior?.numero,
-    proxima: proxima?.numero,
+    anterior: anterior && { numero: anterior.numero, rotulo: rotuloDaPergunta(guia, anterior.numero) },
+    proxima: proxima && { numero: proxima.numero, rotulo: rotuloDaPergunta(guia, proxima.numero) },
   };
   return <PerguntaView dados={dados} />;
 }

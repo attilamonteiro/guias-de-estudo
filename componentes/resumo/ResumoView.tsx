@@ -4,7 +4,7 @@ import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import Link from "next/link";
 import type { Traduzido } from "@/conteudo/tipos";
-import { rotuloDaPergunta, type VisaoDoGuia } from "@/lib/guia";
+import type { VisaoDoGuia } from "@/lib/guia";
 import { usePreferencias } from "@/lib/preferencias";
 import { rotas } from "@/lib/rotas";
 import { cartao, fonteDeTitulo, textoDeRotulo } from "@/tema/estilos";
@@ -50,7 +50,7 @@ export function ResumoView({ visao, respostas }: Props) {
                   sx={{
                     ...cartao,
                     display: "grid",
-                    gridTemplateColumns: "44px minmax(0, 1fr)",
+                    gridTemplateColumns: "52px minmax(0, 1fr)",
                     gap: "4px 12px",
                     p: "12px 14px",
                   }}
@@ -59,7 +59,7 @@ export function ResumoView({ visao, respostas }: Props) {
                     component="span"
                     sx={{ fontFamily: FAMILIA_MONO, color: "text.secondary", fontSize: "0.84rem", pt: "2px" }}
                   >
-                    {rotuloDaPergunta(item.numero)}
+                    {item.rotulo}
                   </Box>
                   <Box sx={{ display: "flex", gap: "8px 12px", flexWrap: "wrap", alignItems: "center" }}>
                     <Box
@@ -77,7 +77,7 @@ export function ResumoView({ visao, respostas }: Props) {
                     </Box>
                     {item.repeteA !== undefined && (
                       <Typography component="span" sx={{ fontSize: "0.88rem", color: "text.secondary" }}>
-                        = {rotuloDaPergunta(item.repeteA)}
+                        = {item.repeteARotulo}
                       </Typography>
                     )}
                     <ChipDoMetodo metodo={item.metodo} />

@@ -14,15 +14,17 @@ export function ehRepetida(pergunta: Pergunta): pergunta is PerguntaRepetida {
   return "repeteA" in pergunta;
 }
 
-/** Q01… na lista original, R01… no roadmap.sh (a partir de 101), M01… na MentorCruise (a partir de 201). */
-export function rotuloDaPergunta(numero: number): string {
-  const dois = (n: number) => String(n).padStart(2, "0");
-  if (numero < 100) return `Q${dois(numero)}`;
-  return numero < 200 ? `R${dois(numero - 100)}` : `M${dois(numero - 200)}`;
-}
-
 export function perguntaPorNumero(guia: Guia, numero: number): Pergunta | undefined {
   return guia.perguntas.find((pergunta) => pergunta.numero === numero);
+}
+
+/** Selo da fonte + posição nela, com 2 dígitos: Q01 (lista original), R01 (roadmap.sh), M01, T01, L01… */
+export function rotuloDaPergunta(guia: Guia, numero: number): string {
+  const pergunta = perguntaPorNumero(guia, numero);
+  const modulo = pergunta && guia.modulos.find((m) => m.id === pergunta.modulo);
+  const fonte = modulo && guia.fontes.find((f) => f.id === modulo.origem);
+  if (!fonte) throw new Error(`Pergunta ${numero}: módulo ou fonte inexistente no guia ${guia.id}`);
+  return `${fonte.marca}${String(numero - fonte.base).padStart(2, "0")}`;
 }
 
 /** A pergunta que carrega a explicação: ela mesma ou, se repetir outra, a outra. */
@@ -54,9 +56,13 @@ export function vizinhasDe(guia: Guia, numero: number): { anterior?: Pergunta; p
 
 export interface ItemDoIndice {
   numero: number;
+  /** Rótulo exibido (Q01, T28, L08…); ver rotuloDaPergunta. */
+  rotulo: string;
   modulo: string;
   metodo: IdMetodo;
   repeteA?: number;
+  /** Rótulo da pergunta que esta repete. */
+  repeteARotulo?: string;
   chaveDeProgresso: number;
   titulo: Traduzido<string>;
   pergunta: Traduzido<string>;
@@ -78,9 +84,11 @@ export interface VisaoDoGuia {
 export function itensDoIndice(guia: Guia): ItemDoIndice[] {
   return guia.perguntas.map((pergunta) => ({
     numero: pergunta.numero,
+    rotulo: rotuloDaPergunta(guia, pergunta.numero),
     modulo: pergunta.modulo,
     metodo: perguntaComExplicacao(guia, pergunta).metodo,
     repeteA: ehRepetida(pergunta) ? pergunta.repeteA : undefined,
+    repeteARotulo: ehRepetida(pergunta) ? rotuloDaPergunta(guia, pergunta.repeteA) : undefined,
     chaveDeProgresso: chaveDeProgresso(pergunta),
     titulo: { pt: pergunta.pt.titulo, en: pergunta.en.titulo },
     pergunta: { pt: pergunta.pt.pergunta, en: pergunta.en.pergunta },

@@ -14,13 +14,27 @@ import {
 } from "@/lib/guia";
 
 describe("rotuloDaPergunta", () => {
-  it("usa Q para a lista original, R para o roadmap.sh e M para a MentorCruise", () => {
-    expect(rotuloDaPergunta(1)).toBe("Q01");
-    expect(rotuloDaPergunta(30)).toBe("Q30");
-    expect(rotuloDaPergunta(101)).toBe("R01");
-    expect(rotuloDaPergunta(150)).toBe("R50");
-    expect(rotuloDaPergunta(201)).toBe("M01");
-    expect(rotuloDaPergunta(240)).toBe("M40");
+  it("backend: Q para a lista original, R para o roadmap.sh e M para a MentorCruise", () => {
+    expect(rotuloDaPergunta(backend, 1)).toBe("Q01");
+    expect(rotuloDaPergunta(backend, 30)).toBe("Q30");
+    expect(rotuloDaPergunta(backend, 101)).toBe("R01");
+    expect(rotuloDaPergunta(backend, 150)).toBe("R50");
+    expect(rotuloDaPergunta(backend, 201)).toBe("M01");
+    expect(rotuloDaPergunta(backend, 240)).toBe("M40");
+  });
+
+  it("nodejs: T para a Turing e L para o artigo do LinkedIn", () => {
+    expect(rotuloDaPergunta(nodejs, 1)).toBe("T01");
+    expect(rotuloDaPergunta(nodejs, 61)).toBe("T61");
+    expect(rotuloDaPergunta(nodejs, 101)).toBe("L01");
+    expect(rotuloDaPergunta(nodejs, 238)).toBe("L138");
+  });
+
+  it("os rótulos são únicos dentro de cada guia", () => {
+    for (const guia of [backend, nodejs]) {
+      const rotulos = guia.perguntas.map((p) => rotuloDaPergunta(guia, p.numero));
+      expect(new Set(rotulos).size, guia.id).toBe(rotulos.length);
+    }
   });
 });
 
@@ -63,20 +77,30 @@ describe("guia de backend", () => {
 });
 
 describe("guia de Node.js", () => {
-  it("tem 61 perguntas (22 + 18 + 21), 19 repetidas e 42 explicações distintas", () => {
+  it("tem 199 perguntas (61 da Turing + 138 do LinkedIn), 95 repetidas e 104 explicações distintas", () => {
     const porModulo = (id: string) => nodejs.perguntas.filter((p) => p.modulo === id);
     expect(porModulo("turing-basicas")).toHaveLength(22);
     expect(porModulo("turing-intermediarias")).toHaveLength(18);
     expect(porModulo("turing-avancadas")).toHaveLength(21);
-    expect(nodejs.perguntas.map((p) => p.numero)).toEqual(Array.from({ length: 61 }, (_, i) => i + 1));
-    expect(nodejs.perguntas.filter(ehRepetida)).toHaveLength(19);
-    expect(perguntasDistintas(nodejs)).toHaveLength(42);
-    expect(visaoDoGuia(nodejs).totalDistinto).toBe(42);
+    const doLinkedin = nodejs.perguntas.filter((p) => p.modulo.startsWith("linkedin-"));
+    expect(doLinkedin.map((p) => p.numero)).toEqual(Array.from({ length: 138 }, (_, i) => i + 101));
+    expect(nodejs.perguntas).toHaveLength(199);
+    expect(nodejs.perguntas.filter(ehRepetida)).toHaveLength(95);
+    expect(perguntasDistintas(nodejs)).toHaveLength(104);
+    expect(visaoDoGuia(nodejs).totalDistinto).toBe(104);
   });
 
-  it("níveis em ordem: básicas antes das intermediárias antes das avançadas", () => {
-    const nivel = { "turing-basicas": 0, "turing-intermediarias": 1, "turing-avancadas": 2 } as Record<string, number>;
-    const niveis = nodejs.perguntas.map((p) => nivel[p.modulo]);
-    expect(niveis).toEqual([...niveis].sort((a, b) => a - b));
+  it("os módulos aparecem na ordem em que o guia os declara", () => {
+    const ordem = nodejs.modulos.map((m) => m.id);
+    const posicoes = nodejs.perguntas.map((p) => ordem.indexOf(p.modulo));
+    expect(posicoes).toEqual([...posicoes].sort((a, b) => a - b));
+  });
+
+  it("a seção do LinkedIn tem as dez seções do artigo, com 20, 15, 20, 13, 12, 12, 16, 14, 10 e 6 perguntas", () => {
+    const ids = nodejs.modulos.filter((m) => m.origem === "linkedin").map((m) => m.id);
+    expect(ids).toHaveLength(10);
+    expect(ids.map((id) => nodejs.perguntas.filter((p) => p.modulo === id).length)).toEqual([
+      20, 15, 20, 13, 12, 12, 16, 14, 10, 6,
+    ]);
   });
 });

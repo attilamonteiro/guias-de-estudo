@@ -6,7 +6,6 @@ import Typography from "@mui/material/Typography";
 import Link from "next/link";
 import { useEffect, useMemo, useState } from "react";
 import type { IdMetodo, Traduzido } from "@/conteudo/tipos";
-import { rotuloDaPergunta } from "@/lib/guia";
 import { usePreferencias, useProgresso } from "@/lib/preferencias";
 import { contarFeitas, escolherParaOTreino, marcar as marcarNoMapa } from "@/lib/progresso";
 import { rotas } from "@/lib/rotas";
@@ -20,6 +19,7 @@ import { AutoTeste } from "../pergunta/AutoTeste";
 /** Uma pergunta (com explicação própria) disponível para o treino. */
 export interface CartaDoTreino {
   numero: number;
+  rotulo: string;
   metodo: IdMetodo;
   pergunta: Traduzido<string>;
   resposta30s: Traduzido<string>;
@@ -93,7 +93,7 @@ export function TreinoView({ guiaId, cartas }: { guiaId: string; cartas: CartaDo
         <Box sx={{ ...cartao, p: "22px", mt: 2 }}>
           <Box sx={{ display: "flex", gap: "10px", flexWrap: "wrap", alignItems: "center" }}>
             <Typography component="span" sx={{ ...textoDeRotulo, fontSize: "0.76rem" }}>
-              {rotuloDaPergunta(carta.numero)} · {restantes} {t.restantesNoTreino}
+              {carta.rotulo} · {restantes} {t.restantesNoTreino}
             </Typography>
             <ChipDoMetodo metodo={carta.metodo} />
           </Box>

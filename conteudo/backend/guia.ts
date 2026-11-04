@@ -26,11 +26,13 @@ export const backend: Guia = {
     {
       id: "lista",
       marca: "Q",
+      base: 0,
       titulo: { pt: "Lista original · 30 perguntas", en: "Original list · 30 questions" },
     },
     {
       id: "roadmap",
       marca: "R",
+      base: 100,
       titulo: { pt: "roadmap.sh · 50 perguntas", en: "roadmap.sh · 50 questions" },
       descricao: {
         pt: "Perguntas de roadmap.sh/questions/backend, respondidas aqui com explicações próprias. As que repetem outra pergunta do guia reaproveitam a mesma explicação (etiqueta “= Q”).",
@@ -41,6 +43,7 @@ export const backend: Guia = {
     {
       id: "mentorcruise",
       marca: "M",
+      base: 200,
       titulo: { pt: "MentorCruise · 40 perguntas", en: "MentorCruise · 40 questions" },
       descricao: {
         pt: "Perguntas de mentorcruise.com/questions/backend, respondidas aqui com explicações próprias. As que repetem outra pergunta do guia reaproveitam a mesma explicação (etiqueta “= Q” ou “= R”). Nas perguntas de experiência (“você já…”), a explicação mostra como responder.",

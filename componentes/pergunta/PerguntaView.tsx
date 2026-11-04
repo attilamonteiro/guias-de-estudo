@@ -3,7 +3,6 @@
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import type { Modulo, PerguntaPropria, Traduzido } from "@/conteudo/tipos";
-import { rotuloDaPergunta } from "@/lib/guia";
 import { usePreferencias } from "@/lib/preferencias";
 import { cartao, fonteDeTitulo, textoDeRotulo } from "@/tema/estilos";
 import { FAMILIA_MONO } from "@/tema/familias";
@@ -14,20 +13,22 @@ import { Rotulo } from "../base/Rotulo";
 import { BlocoDaExplicacao } from "../blocos/BlocoDaExplicacao";
 import { Destaque } from "../blocos/Destaque";
 import { AutoTeste } from "./AutoTeste";
-import { NavegacaoEntrePerguntas } from "./NavegacaoEntrePerguntas";
+import { NavegacaoEntrePerguntas, type VizinhaDaPergunta } from "./NavegacaoEntrePerguntas";
 
 export interface DadosDaPergunta {
   guiaId: string;
   numero: number;
+  /** Rótulo exibido (Q01, T28, L08…). */
+  rotulo: string;
   chaveDeProgresso: number;
   modulo: Modulo;
   /** Título e enunciado da pergunta pedida (que pode ser uma repetição de outra). */
   textos: Traduzido<{ titulo: string; pergunta: string }>;
-  repeteA?: { numero: number; titulo: Traduzido<string> };
+  repeteA?: { numero: number; rotulo: string; titulo: Traduzido<string> };
   /** A pergunta que carrega a explicação (a própria ou a que ela repete). */
   explicacao: PerguntaPropria;
-  anterior?: number;
-  proxima?: number;
+  anterior?: VizinhaDaPergunta;
+  proxima?: VizinhaDaPergunta;
 }
 
 const secao = { mt: "34px" } as const;
@@ -38,7 +39,7 @@ export function PerguntaView({ dados }: { dados: DadosDaPergunta }) {
   const { idioma, t } = usePreferencias();
   const { guiaId, numero, modulo, explicacao, repeteA } = dados;
   const conteudo = explicacao[idioma];
-  const rotulo = rotuloDaPergunta(numero);
+  const rotulo = dados.rotulo;
   const origem = modulo.letra ? `${t.modulo} ${modulo.letra} — ` : "";
 
   return (
@@ -69,11 +70,8 @@ export function PerguntaView({ dados }: { dados: DadosDaPergunta }) {
         {repeteA && (
           <Destaque
             variante="chave"
-            titulo={`${t.mesmaMateriaDa} ${rotuloDaPergunta(repeteA.numero)}`}
-            texto={t.mesmaMateriaExplicacao.replace(
-              "{q}",
-              `${rotuloDaPergunta(repeteA.numero)} (${repeteA.titulo[idioma]})`,
-            )}
+            titulo={`${t.mesmaMateriaDa} ${repeteA.rotulo}`}
+            texto={t.mesmaMateriaExplicacao.replace("{q}", `${repeteA.rotulo} (${repeteA.titulo[idioma]})`)}
           />
         )}
       </header>

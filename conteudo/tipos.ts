@@ -124,8 +124,10 @@ export type Pergunta = PerguntaPropria | PerguntaRepetida;
 /** De onde vem um conjunto de perguntas. Cada fonte vira uma seção da página de abertura do guia. */
 export interface Fonte {
   id: string;
-  /** Letra do selo dos módulos desta fonte quando eles não têm letra própria (R, M…). */
+  /** Letra do selo dos rótulos (Q01, R01, T01…) e dos módulos desta fonte que não têm letra própria. */
   marca: string;
+  /** Número anterior ao da primeira pergunta da fonte: o rótulo é `marca` + (número − base), com 2 dígitos. */
+  base: number;
   titulo: Traduzido<string>;
   descricao?: Traduzido<string>;
   /** Página de origem, quando as perguntas vêm de um site. */
