@@ -1,0 +1,8 @@
+[
+  {
+    "pasta": "backend",
+    "titulo": "Backend",
+    "detalhe": "80 perguntas · PT/EN",
+    "descricao": "Perguntas de entrevista de backend (arquitetura, bancos, cache, segurança, sistemas distribuídos), cada uma com o método de explicação mais adequado, armadilhas e autoteste."
+  }
+]
