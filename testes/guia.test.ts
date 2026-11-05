@@ -1,5 +1,6 @@
 import { describe, expect, it } from "vitest";
 import { backend } from "@/conteudo/backend/guia";
+import { iam } from "@/conteudo/iam/guia";
 import { nodejs } from "@/conteudo/nodejs/guia";
 import { react } from "@/conteudo/react/guia";
 import {
@@ -56,8 +57,28 @@ describe("rotuloDaPergunta", () => {
     expect(rotuloDaPergunta(react, 748)).toBe("M48");
   });
 
+  it("iam: Q (lista do guia) e P, H, T, R, C, S, D, V, G, I, W (fontes)", () => {
+    expect(rotuloDaPergunta(iam, 1)).toBe("Q01");
+    expect(rotuloDaPergunta(iam, 146)).toBe("Q146");
+    expect(rotuloDaPergunta(iam, 201)).toBe("P01");
+    expect(rotuloDaPergunta(iam, 238)).toBe("P38");
+    expect(rotuloDaPergunta(iam, 301)).toBe("H01");
+    expect(rotuloDaPergunta(iam, 401)).toBe("T01");
+    expect(rotuloDaPergunta(iam, 501)).toBe("R01");
+    expect(rotuloDaPergunta(iam, 601)).toBe("C01");
+    expect(rotuloDaPergunta(iam, 701)).toBe("S01");
+    expect(rotuloDaPergunta(iam, 759)).toBe("S59");
+    expect(rotuloDaPergunta(iam, 801)).toBe("D01");
+    expect(rotuloDaPergunta(iam, 855)).toBe("D55");
+    expect(rotuloDaPergunta(iam, 901)).toBe("V01");
+    expect(rotuloDaPergunta(iam, 1001)).toBe("G01");
+    expect(rotuloDaPergunta(iam, 1101)).toBe("I01");
+    expect(rotuloDaPergunta(iam, 1201)).toBe("W01");
+    expect(rotuloDaPergunta(iam, 1300)).toBe("W100");
+  });
+
   it("os rótulos são únicos dentro de cada guia", () => {
-    for (const guia of [backend, nodejs, react]) {
+    for (const guia of [backend, nodejs, react, iam]) {
       const rotulos = guia.perguntas.map((p) => rotuloDaPergunta(guia, p.numero));
       expect(new Set(rotulos).size, guia.id).toBe(rotulos.length);
     }
@@ -152,6 +173,58 @@ describe("guia de Node.js", () => {
     for (const lingua of [util.pt, util.en]) {
       expect(lingua.blocos.filter((b) => b.tipo === "codigo")).toHaveLength(0);
     }
+  });
+});
+
+describe("guia de IAM", () => {
+  const doGuia = (origem: string) => iam.perguntas.filter((p) => p.modulo.startsWith(origem + "-"));
+  const faixa = (de: number, quantas: number) => Array.from({ length: quantas }, (_, i) => i + de);
+  const tamanhos = (origem: string) =>
+    iam.modulos.filter((m) => m.origem === origem).map((m) => iam.perguntas.filter((p) => p.modulo === m.id).length);
+
+  it("tem 542 perguntas: 146 da lista do guia e 396 de onze fontes, todas apontando para uma explicação da lista", () => {
+    expect(iam.perguntas.filter((p) => p.numero <= 146)).toHaveLength(146);
+    expect(doGuia("pomerium").map((p) => p.numero)).toEqual(faixa(201, 38));
+    expect(doGuia("hyring").map((p) => p.numero)).toEqual(faixa(301, 28));
+    expect(doGuia("techtarget").map((p) => p.numero)).toEqual(faixa(401, 15));
+    expect(doGuia("prachub").map((p) => p.numero)).toEqual(faixa(501, 19));
+    expect(doGuia("climbtheladder").map((p) => p.numero)).toEqual(faixa(601, 45));
+    expect(doGuia("securityscientist").map((p) => p.numero)).toEqual(faixa(701, 59));
+    expect(doGuia("secondtalent").map((p) => p.numero)).toEqual(faixa(801, 55));
+    expect(doGuia("javainuse").map((p) => p.numero)).toEqual(faixa(901, 5));
+    expect(doGuia("javaguides").map((p) => p.numero)).toEqual(faixa(1001, 9));
+    expect(doGuia("interviewprep").map((p) => p.numero)).toEqual(faixa(1101, 23));
+    expect(doGuia("wecreateproblems").map((p) => p.numero)).toEqual(faixa(1201, 100));
+    expect(iam.perguntas).toHaveLength(542);
+    expect(iam.perguntas.filter(ehRepetida)).toHaveLength(396);
+    expect(perguntasDistintas(iam)).toHaveLength(146);
+    expect(visaoDoGuia(iam).totalDistinto).toBe(146);
+    for (const pergunta of iam.perguntas.filter(ehRepetida)) {
+      expect(pergunta.repeteA, `pergunta ${pergunta.numero}`).toBeGreaterThanOrEqual(1);
+      expect(pergunta.repeteA, `pergunta ${pergunta.numero}`).toBeLessThanOrEqual(146);
+    }
+  });
+
+  it("a lista do guia tem os oito módulos A a H, com 21, 21, 12, 14, 16, 18, 22 e 22 perguntas", () => {
+    expect(iam.modulos.filter((m) => m.origem === "lista").map((m) => m.letra)).toEqual([..."ABCDEFGH"]);
+    expect(tamanhos("lista")).toEqual([21, 21, 12, 14, 16, 18, 22, 22]);
+  });
+
+  it("os módulos aparecem na ordem em que o guia os declara", () => {
+    const ordem = iam.modulos.map((m) => m.id);
+    const posicoes = iam.perguntas.map((p) => ordem.indexOf(p.modulo));
+    expect(posicoes).toEqual([...posicoes].sort((a, b) => a - b));
+  });
+
+  it("as seções de cada fonte seguem a ordem das listas originais", () => {
+    expect(tamanhos("pomerium")).toEqual([11, 8, 7, 12]);
+    expect(tamanhos("hyring")).toEqual([15, 6, 7]);
+    expect(tamanhos("techtarget")).toEqual([8, 7]);
+    expect(tamanhos("prachub")).toEqual([3, 5, 4, 4, 3]);
+    expect(tamanhos("climbtheladder")).toEqual([15, 10, 10, 10]);
+    expect(tamanhos("securityscientist")).toEqual([12, 12, 12, 11, 12]);
+    expect(tamanhos("secondtalent")).toEqual([6, 6, 6, 5, 3, 4, 6, 5, 5, 4, 5]);
+    expect(tamanhos("wecreateproblems")).toEqual([37, 35, 28]);
   });
 });
 

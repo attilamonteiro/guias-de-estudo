@@ -1,0 +1,422 @@
+import type { Guia } from "../tipos";
+import { perguntas } from "./perguntas";
+
+export const iam: Guia = {
+  id: "iam",
+  detalhe: "542 perguntas · PT/EN",
+  textos: {
+    pt: {
+      nome: "Guia de IAM",
+      chamada:
+        "Perguntas de entrevista sobre identidade e acesso (OAuth 2.0, OpenID Connect, SAML, tokens e sessões, MFA e passkeys, autorização, ataques e depuração), cada uma com o método de explicação mais adequado, armadilhas e autoteste.",
+      titulo: "Identidade e acesso, do protocolo ao ataque.",
+      introducao:
+        "542 perguntas de entrevista sobre IAM: 146 da lista do guia, organizadas em oito módulos (de fundamentos a ataques e depuração), mais 396 de 11 fontes. Onde as perguntas pedem a mesma coisa, a explicação é a mesma (são 146 explicações distintas) e o progresso conta uma vez só. Marque o que já domina e treine só o resto.",
+    },
+    en: {
+      nome: "IAM Guide",
+      chamada:
+        "Interview questions on identity and access (OAuth 2.0, OpenID Connect, SAML, tokens and sessions, MFA and passkeys, authorization, attacks and debugging), each with the best-fitting explanation method, pitfalls and a self-test.",
+      titulo: "Identity and access, from protocol to attack.",
+      introducao:
+        "542 IAM interview questions: 146 from the guide's own list, organized in eight modules (from fundamentals to attacks and debugging), plus 396 from 11 sources. Where questions ask for the same thing, the explanation is the same (146 distinct explanations) and progress counts once. Mark what you already own and drill only the rest.",
+    },
+  },
+  fontes: [
+    {
+      id: "lista",
+      marca: "Q",
+      base: 0,
+      titulo: { pt: "Lista do guia · 146 perguntas", en: "Guide list · 146 questions" },
+      descricao: {
+        pt: "As perguntas centrais de IAM para a vaga, em oito módulos (A a H). É aqui que ficam as explicações; as perguntas das fontes abaixo que tratam do mesmo assunto apontam para elas (etiqueta “= Q”).",
+        en: "The core IAM questions for the role, in eight modules (A to H). The explanations live here; the questions from the sources below that cover the same subject point to them (tag “= Q”).",
+      },
+    },
+    {
+      id: "pomerium",
+      marca: "P",
+      base: 200,
+      titulo: { pt: "Pomerium · 38 perguntas", en: "Pomerium · 38 questions" },
+      descricao: {
+        pt: "Perguntas do artigo “40 Unique IAM Interview Questions and Answers”, do Pomerium, do básico ao avançado. Entram só as perguntas técnicas (as de comportamento e de carreira ficam de fora). As respostas são explicações próprias; as que repetem outra pergunta do guia reaproveitam a mesma explicação (etiqueta “= Q”).",
+        en: "Questions from the article “40 Unique IAM Interview Questions and Answers” by Pomerium, from basic to advanced. Only the technical questions come in (behavioral and career questions are left out). The answers are original explanations; the ones that repeat another question of the guide reuse the same explanation (tag “= Q”).",
+      },
+      url: "https://www.pomerium.com/blog/iam-interview-questions-and-answers",
+    },
+    {
+      id: "hyring",
+      marca: "H",
+      base: 300,
+      titulo: { pt: "Hyring · 28 perguntas", en: "Hyring · 28 questions" },
+      descricao: {
+        pt: "Perguntas da página “Identity and Access Management Interview Questions (2026)”, do Hyring. Entram só as perguntas técnicas (as de comportamento e de carreira ficam de fora). As respostas são explicações próprias; as que repetem outra pergunta do guia reaproveitam a mesma explicação (etiqueta “= Q”).",
+        en: "Questions from the page “Identity and Access Management Interview Questions (2026)” by Hyring. Only the technical questions come in (behavioral and career questions are left out). The answers are original explanations; the ones that repeat another question of the guide reuse the same explanation (tag “= Q”).",
+      },
+      url: "https://hyring.com/jobseeker-toolkit/interview-questions/technical/identity-and-access-management",
+    },
+    {
+      id: "techtarget",
+      marca: "T",
+      base: 400,
+      titulo: { pt: "TechTarget · 15 perguntas", en: "TechTarget · 15 questions" },
+      descricao: {
+        pt: "Perguntas do artigo de IAM da TechTarget (“IAM interview questions to prep for your next career move”). Entram só as perguntas técnicas (as de comportamento e de carreira ficam de fora). As respostas são explicações próprias; as que repetem outra pergunta do guia reaproveitam a mesma explicação (etiqueta “= Q”).",
+        en: "Questions from the TechTarget IAM article (“IAM interview questions to prep for your next career move”). Only the technical questions come in (behavioral and career questions are left out). The answers are original explanations; the ones that repeat another question of the guide reuse the same explanation (tag “= Q”).",
+      },
+      url: "https://www.techtarget.com/whatis/feature/IAM-Interview-Questions-and-Answers",
+    },
+    {
+      id: "prachub",
+      marca: "R",
+      base: 500,
+      titulo: { pt: "PracHub · 19 perguntas", en: "PracHub · 19 questions" },
+      descricao: {
+        pt: "Perguntas do guia “Authentication and Authorization Interview Questions: OAuth, OIDC, JWT, and Sessions”, do PracHub. Entram só as perguntas técnicas (as de comportamento e de carreira ficam de fora). As respostas são explicações próprias; as que repetem outra pergunta do guia reaproveitam a mesma explicação (etiqueta “= Q”).",
+        en: "Questions from the guide “Authentication and Authorization Interview Questions: OAuth, OIDC, JWT, and Sessions” by PracHub. Only the technical questions come in (behavioral and career questions are left out). The answers are original explanations; the ones that repeat another question of the guide reuse the same explanation (tag “= Q”).",
+      },
+      url: "https://prachub.com/resources/authentication-and-authorization-interview-questions-oauth-oidc-jwt-and-sessions",
+    },
+    {
+      id: "climbtheladder",
+      marca: "C",
+      base: 600,
+      titulo: { pt: "climbtheladder · 45 perguntas", en: "climbtheladder · 45 questions" },
+      descricao: {
+        pt: "Perguntas de quatro páginas do climbtheladder.com: SAML, OAuth 2.0, OpenID Connect e MFA. Entram só as perguntas técnicas (as de comportamento e de carreira ficam de fora). As respostas são explicações próprias; as que repetem outra pergunta do guia reaproveitam a mesma explicação (etiqueta “= Q”).",
+        en: "Questions from four pages of climbtheladder.com: SAML, OAuth 2.0, OpenID Connect and MFA. Only the technical questions come in (behavioral and career questions are left out). The answers are original explanations; the ones that repeat another question of the guide reuse the same explanation (tag “= Q”).",
+      },
+      url: "https://climbtheladder.com/saml-interview-questions/",
+    },
+    {
+      id: "securityscientist",
+      marca: "S",
+      base: 700,
+      titulo: { pt: "Security Scientist · 59 perguntas", en: "Security Scientist · 59 questions" },
+      descricao: {
+        pt: "Perguntas da série “12 Questions and Answers About …”, do Security Scientist: SAML, SAML assertion, passkeys, RBAC e privilégio mínimo. Entram só as perguntas técnicas (as de comportamento e de carreira ficam de fora). As respostas são explicações próprias; as que repetem outra pergunta do guia reaproveitam a mesma explicação (etiqueta “= Q”).",
+        en: "Questions from the “12 Questions and Answers About …” series by Security Scientist: SAML, SAML assertion, passkeys, RBAC and least privilege. Only the technical questions come in (behavioral and career questions are left out). The answers are original explanations; the ones that repeat another question of the guide reuse the same explanation (tag “= Q”).",
+      },
+      url: "https://www.securityscientist.net/blog/12-questions-and-answers-about-saml-protocol/",
+    },
+    {
+      id: "secondtalent",
+      marca: "D",
+      base: 800,
+      titulo: { pt: "secondtalent · 55 perguntas", en: "secondtalent · 55 questions" },
+      descricao: {
+        pt: "Perguntas de duas páginas do secondtalent.com para desenvolvedores experientes: OAuth 2.0 e JWT. Entram só as perguntas técnicas (as de comportamento e de carreira ficam de fora). As respostas são explicações próprias; as que repetem outra pergunta do guia reaproveitam a mesma explicação (etiqueta “= Q”).",
+        en: "Questions from two pages of secondtalent.com for experienced developers: OAuth 2.0 and JWT. Only the technical questions come in (behavioral and career questions are left out). The answers are original explanations; the ones that repeat another question of the guide reuse the same explanation (tag “= Q”).",
+      },
+      url: "https://www.secondtalent.com/interview-guide/oauth/",
+    },
+    {
+      id: "javainuse",
+      marca: "V",
+      base: 900,
+      titulo: { pt: "javainuse · 5 perguntas", en: "javainuse · 5 questions" },
+      descricao: {
+        pt: "Perguntas de SAML do javainuse.com. Entram só as perguntas técnicas (as de comportamento e de carreira ficam de fora). As respostas são explicações próprias; as que repetem outra pergunta do guia reaproveitam a mesma explicação (etiqueta “= Q”).",
+        en: "SAML questions from javainuse.com. Only the technical questions come in (behavioral and career questions are left out). The answers are original explanations; the ones that repeat another question of the guide reuse the same explanation (tag “= Q”).",
+      },
+      url: "https://javainuse.com/misc/saml",
+    },
+    {
+      id: "javaguides",
+      marca: "G",
+      base: 1000,
+      titulo: { pt: "javaguides · 9 perguntas", en: "javaguides · 9 questions" },
+      descricao: {
+        pt: "Perguntas de OAuth 2 do javaguides.net. Entram só as perguntas técnicas (as de comportamento e de carreira ficam de fora). As respostas são explicações próprias; as que repetem outra pergunta do guia reaproveitam a mesma explicação (etiqueta “= Q”).",
+        en: "OAuth 2 questions from javaguides.net. Only the technical questions come in (behavioral and career questions are left out). The answers are original explanations; the ones that repeat another question of the guide reuse the same explanation (tag “= Q”).",
+      },
+      url: "https://javaguides.net/2024/06/oauth-2-interview-questions.html",
+    },
+    {
+      id: "interviewprep",
+      marca: "I",
+      base: 1100,
+      titulo: { pt: "interviewprep.org · 23 perguntas", en: "interviewprep.org · 23 questions" },
+      descricao: {
+        pt: "Perguntas de controle de acesso do interviewprep.org. Entram só as perguntas técnicas (as de comportamento e de carreira ficam de fora). As respostas são explicações próprias; as que repetem outra pergunta do guia reaproveitam a mesma explicação (etiqueta “= Q”).",
+        en: "Access control questions from interviewprep.org. Only the technical questions come in (behavioral and career questions are left out). The answers are original explanations; the ones that repeat another question of the guide reuse the same explanation (tag “= Q”).",
+      },
+      url: "https://interviewprep.org/access-control-interview-questions/",
+    },
+    {
+      id: "wecreateproblems",
+      marca: "W",
+      base: 1200,
+      titulo: { pt: "wecreateproblems · 100 perguntas", en: "wecreateproblems · 100 questions" },
+      descricao: {
+        pt: "Perguntas de arquitetura zero trust do wecreateproblems.com. Entram só as perguntas técnicas (as de comportamento e de carreira ficam de fora). As respostas são explicações próprias; as que repetem outra pergunta do guia reaproveitam a mesma explicação (etiqueta “= Q”).",
+        en: "Zero trust architecture questions from wecreateproblems.com. Only the technical questions come in (behavioral and career questions are left out). The answers are original explanations; the ones that repeat another question of the guide reuse the same explanation (tag “= Q”).",
+      },
+      url: "https://www.wecreateproblems.com/interview-questions/zero-trust-architecture-interview-questions",
+    },
+  ],
+  modulos: [
+    { id: "fundamentos", letra: "A", origem: "lista", nome: { pt: "Fundamentos", en: "Fundamentals" } },
+    { id: "oauth", letra: "B", origem: "lista", nome: { pt: "OAuth 2.0 e fluxos", en: "OAuth 2.0 and flows" } },
+    { id: "oidc", letra: "C", origem: "lista", nome: { pt: "OpenID Connect", en: "OpenID Connect" } },
+    { id: "saml", letra: "D", origem: "lista", nome: { pt: "SAML", en: "SAML" } },
+    {
+      id: "tokens-e-sessoes",
+      letra: "E",
+      origem: "lista",
+      nome: { pt: "Tokens e sessões", en: "Tokens and sessions" },
+    },
+    {
+      id: "mfa-e-passkeys",
+      letra: "F",
+      origem: "lista",
+      nome: { pt: "MFA, passwordless e passkeys", en: "MFA, passwordless and passkeys" },
+    },
+    { id: "autorizacao", letra: "G", origem: "lista", nome: { pt: "Autorização", en: "Authorization" } },
+    {
+      id: "ataques-e-depuracao",
+      letra: "H",
+      origem: "lista",
+      nome: { pt: "Ataques e depuração", en: "Attacks and debugging" },
+    },
+    { id: "pomerium-basic", letra: "", origem: "pomerium", nome: { pt: "Pomerium · Básico", en: "Pomerium · Basic" } },
+    {
+      id: "pomerium-zero-trust",
+      letra: "",
+      origem: "pomerium",
+      nome: { pt: "Pomerium · Zero trust", en: "Pomerium · Zero trust" },
+    },
+    {
+      id: "pomerium-advanced-knowledge",
+      letra: "",
+      origem: "pomerium",
+      nome: { pt: "Pomerium · Avançado (conhecimento)", en: "Pomerium · Advanced (knowledge)" },
+    },
+    {
+      id: "pomerium-advanced-experience",
+      letra: "",
+      origem: "pomerium",
+      nome: { pt: "Pomerium · Avançado (experiência)", en: "Pomerium · Advanced (experience)" },
+    },
+    {
+      id: "hyring-fundamentals",
+      letra: "",
+      origem: "hyring",
+      nome: { pt: "Hyring · Fundamentos", en: "Hyring · Fundamentals" },
+    },
+    { id: "hyring-practical", letra: "", origem: "hyring", nome: { pt: "Hyring · Prático", en: "Hyring · Practical" } },
+    {
+      id: "hyring-advanced-scenarios",
+      letra: "",
+      origem: "hyring",
+      nome: { pt: "Hyring · Cenários avançados", en: "Hyring · Advanced scenarios" },
+    },
+    {
+      id: "techtarget-basic",
+      letra: "",
+      origem: "techtarget",
+      nome: { pt: "TechTarget · Básico", en: "TechTarget · Basic" },
+    },
+    {
+      id: "techtarget-advanced",
+      letra: "",
+      origem: "techtarget",
+      nome: { pt: "TechTarget · Avançado", en: "TechTarget · Advanced" },
+    },
+    {
+      id: "prachub-authentication-and-authorization",
+      letra: "",
+      origem: "prachub",
+      nome: { pt: "PracHub · Autenticação e autorização", en: "PracHub · Authentication and authorization" },
+    },
+    {
+      id: "prachub-oauth-and-openid-connect",
+      letra: "",
+      origem: "prachub",
+      nome: { pt: "PracHub · OAuth e OpenID Connect", en: "PracHub · OAuth and OpenID Connect" },
+    },
+    { id: "prachub-jwt", letra: "", origem: "prachub", nome: { pt: "PracHub · JWT", en: "PracHub · JWT" } },
+    {
+      id: "prachub-sessions",
+      letra: "",
+      origem: "prachub",
+      nome: { pt: "PracHub · Sessões", en: "PracHub · Sessions" },
+    },
+    {
+      id: "prachub-frequently-asked-questions",
+      letra: "",
+      origem: "prachub",
+      nome: { pt: "PracHub · Perguntas frequentes", en: "PracHub · Frequently asked questions" },
+    },
+    {
+      id: "climbtheladder-saml",
+      letra: "",
+      origem: "climbtheladder",
+      nome: { pt: "climbtheladder · SAML", en: "climbtheladder · SAML" },
+    },
+    {
+      id: "climbtheladder-oauth-2-0",
+      letra: "",
+      origem: "climbtheladder",
+      nome: { pt: "climbtheladder · OAuth 2.0", en: "climbtheladder · OAuth 2.0" },
+    },
+    {
+      id: "climbtheladder-openid-connect",
+      letra: "",
+      origem: "climbtheladder",
+      nome: { pt: "climbtheladder · OpenID Connect", en: "climbtheladder · OpenID Connect" },
+    },
+    {
+      id: "climbtheladder-mfa",
+      letra: "",
+      origem: "climbtheladder",
+      nome: { pt: "climbtheladder · MFA", en: "climbtheladder · MFA" },
+    },
+    {
+      id: "securityscientist-saml",
+      letra: "",
+      origem: "securityscientist",
+      nome: { pt: "Security Scientist · SAML", en: "Security Scientist · SAML" },
+    },
+    {
+      id: "securityscientist-saml-assertion",
+      letra: "",
+      origem: "securityscientist",
+      nome: { pt: "Security Scientist · SAML assertion", en: "Security Scientist · SAML assertion" },
+    },
+    {
+      id: "securityscientist-passkeys",
+      letra: "",
+      origem: "securityscientist",
+      nome: { pt: "Security Scientist · Passkeys", en: "Security Scientist · Passkeys" },
+    },
+    {
+      id: "securityscientist-rbac",
+      letra: "",
+      origem: "securityscientist",
+      nome: { pt: "Security Scientist · RBAC", en: "Security Scientist · RBAC" },
+    },
+    {
+      id: "securityscientist-least-privilege",
+      letra: "",
+      origem: "securityscientist",
+      nome: { pt: "Security Scientist · Privilégio mínimo", en: "Security Scientist · Least privilege" },
+    },
+    {
+      id: "secondtalent-oauth-2-0-core-concepts-and-roles",
+      letra: "",
+      origem: "secondtalent",
+      nome: {
+        pt: "secondtalent · OAuth 2.0 · Conceitos e papéis",
+        en: "secondtalent · OAuth 2.0 · Core concepts and roles",
+      },
+    },
+    {
+      id: "secondtalent-oauth-2-0-grant-types-and-flows",
+      letra: "",
+      origem: "secondtalent",
+      nome: {
+        pt: "secondtalent · OAuth 2.0 · Grants e fluxos",
+        en: "secondtalent · OAuth 2.0 · Grant types and flows",
+      },
+    },
+    {
+      id: "secondtalent-oauth-2-0-tokens-access-refresh-id",
+      letra: "",
+      origem: "secondtalent",
+      nome: {
+        pt: "secondtalent · OAuth 2.0 · Tokens: access, refresh, ID",
+        en: "secondtalent · OAuth 2.0 · Tokens: access, refresh, ID",
+      },
+    },
+    {
+      id: "secondtalent-oauth-2-0-security-best-practices",
+      letra: "",
+      origem: "secondtalent",
+      nome: {
+        pt: "secondtalent · OAuth 2.0 · Boas práticas de segurança",
+        en: "secondtalent · OAuth 2.0 · Security best practices",
+      },
+    },
+    {
+      id: "secondtalent-oauth-2-0-openid-connect-and-beyond",
+      letra: "",
+      origem: "secondtalent",
+      nome: {
+        pt: "secondtalent · OAuth 2.0 · OpenID Connect e além",
+        en: "secondtalent · OAuth 2.0 · OpenID Connect and beyond",
+      },
+    },
+    {
+      id: "secondtalent-oauth-2-0-what-changed-recently",
+      letra: "",
+      origem: "secondtalent",
+      nome: {
+        pt: "secondtalent · OAuth 2.0 · O que mudou recentemente",
+        en: "secondtalent · OAuth 2.0 · What changed recently",
+      },
+    },
+    {
+      id: "secondtalent-jwt-structure-and-claims",
+      letra: "",
+      origem: "secondtalent",
+      nome: { pt: "secondtalent · JWT · Estrutura e claims", en: "secondtalent · JWT · Structure and claims" },
+    },
+    {
+      id: "secondtalent-jwt-validation",
+      letra: "",
+      origem: "secondtalent",
+      nome: { pt: "secondtalent · JWT · Validação", en: "secondtalent · JWT · Validation" },
+    },
+    {
+      id: "secondtalent-jwt-keys-and-token-lifecycle",
+      letra: "",
+      origem: "secondtalent",
+      nome: { pt: "secondtalent · JWT · Chaves e ciclo de vida", en: "secondtalent · JWT · Keys and token lifecycle" },
+    },
+    {
+      id: "secondtalent-jwt-storing-tokens",
+      letra: "",
+      origem: "secondtalent",
+      nome: { pt: "secondtalent · JWT · Onde guardar tokens", en: "secondtalent · JWT · Storing tokens" },
+    },
+    {
+      id: "secondtalent-jwt-what-changed-recently",
+      letra: "",
+      origem: "secondtalent",
+      nome: { pt: "secondtalent · JWT · O que mudou recentemente", en: "secondtalent · JWT · What changed recently" },
+    },
+    { id: "javainuse-saml", letra: "", origem: "javainuse", nome: { pt: "javainuse · SAML", en: "javainuse · SAML" } },
+    {
+      id: "javaguides-oauth-2",
+      letra: "",
+      origem: "javaguides",
+      nome: { pt: "javaguides · OAuth 2", en: "javaguides · OAuth 2" },
+    },
+    {
+      id: "interviewprep-access-control",
+      letra: "",
+      origem: "interviewprep",
+      nome: { pt: "interviewprep.org · Controle de acesso", en: "interviewprep.org · Access control" },
+    },
+    {
+      id: "wecreateproblems-zero-trust-beginner",
+      letra: "",
+      origem: "wecreateproblems",
+      nome: { pt: "wecreateproblems · Zero trust · Iniciante", en: "wecreateproblems · Zero trust · Beginner" },
+    },
+    {
+      id: "wecreateproblems-zero-trust-intermediate",
+      letra: "",
+      origem: "wecreateproblems",
+      nome: { pt: "wecreateproblems · Zero trust · Intermediário", en: "wecreateproblems · Zero trust · Intermediate" },
+    },
+    {
+      id: "wecreateproblems-zero-trust-experienced",
+      letra: "",
+      origem: "wecreateproblems",
+      nome: { pt: "wecreateproblems · Zero trust · Experiente", en: "wecreateproblems · Zero trust · Experienced" },
+    },
+  ],
+  perguntas,
+};
